@@ -2,13 +2,12 @@
 
 kotlin = "1.9.21"
 compose = "1.5.11"
-agp = "8.2.0"
+agp = "8.2.2"
 androidx-appcompat = "1.6.1"
-androidx-activityCompose = "1.8.1"
-compose-uitooling = "1.5.4"
+androidx-activityCompose = "1.8.2"
+compose-uitooling = "1.6.0"
 voyager = "1.0.0"
 composeImageLoader = "1.7.1"
-napier = "2.7.0"
 buildConfig = "4.1.1"
 kotlinx-coroutines = "1.7.3"
 ktor = "2.3.7"
@@ -17,6 +16,8 @@ kotlinx-serialization = "1.6.2"
 kotlinx-datetime = "0.5.0"
 koin = "3.5.3"
 sqlDelight = "2.0.1"
+lyricist = "1.6.2"
+ksp = "1.9.20-1.0.14"
 
 [libraries]
 
@@ -25,7 +26,6 @@ androidx-activityCompose = { module = "androidx.activity:activity-compose", vers
 compose-uitooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-uitooling" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 composeImageLoader = { module = "io.github.qdsfdhvh:image-loader", version.ref = "composeImageLoader" }
-napier = { module = "io.github.aakira:napier", version.ref = "napier" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
@@ -43,6 +43,8 @@ sqlDelight-driver-sqlite = { module = "app.cash.sqldelight:sqlite-driver", versi
 sqlDelight-driver-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
 sqlDelight-driver-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
 sqlDelight-driver-js = { module = "app.cash.sqldelight:web-worker-driver", version.ref = "sqlDelight" }
+lyricist = { module = "cafe.adriel.lyricist:lyricist", version.ref = "lyricist" }
+lyricist-processor = { module = "cafe.adriel.lyricist:lyricist-processor", version.ref = "lyricist" }
 
 [plugins]
 
@@ -52,3 +54,4 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+kotlin-symbol-processing = { id = "com.google.devtools.ksp", version.ref = "ksp" }

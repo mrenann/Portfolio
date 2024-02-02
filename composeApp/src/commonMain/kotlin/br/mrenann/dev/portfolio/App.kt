@@ -36,6 +36,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import br.mrenann.dev.portfolio.theme.AppTheme
 import br.mrenann.dev.portfolio.theme.LocalThemeIsDark
+import cafe.adriel.lyricist.strings
 
 @Composable
 internal fun App() = AppTheme {
@@ -44,7 +45,6 @@ internal fun App() = AppTheme {
     var passwordVisibility by remember { mutableStateOf(false) }
 
     Column(modifier = Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
-
         Row(
             horizontalArrangement = Arrangement.Center
         ) {
@@ -53,6 +53,7 @@ internal fun App() = AppTheme {
                 style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(16.dp)
             )
+            Text(strings.simple)
 
             Spacer(modifier = Modifier.weight(1.0f))
 
