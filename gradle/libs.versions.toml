@@ -18,6 +18,8 @@ koin = "3.5.3"
 sqlDelight = "2.0.1"
 lyricist = "1.6.2"
 ksp = "1.9.20-1.0.14"
+windowsSize = "0.3.2"
+napier = "2.7.1"
 
 [libraries]
 
@@ -53,6 +55,8 @@ sqlDelight-driver-native = { module = "app.cash.sqldelight:native-driver", versi
 sqlDelight-driver-js = { module = "app.cash.sqldelight:web-worker-driver", version.ref = "sqlDelight" }
 lyricist = { module = "cafe.adriel.lyricist:lyricist", version.ref = "lyricist" }
 lyricist-processor = { module = "cafe.adriel.lyricist:lyricist-processor", version.ref = "lyricist" }
+napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+windowsSize = { module = "dev.chrisbanes.material3:material3-window-size-class-multiplatform", version.ref = "windowsSize"}
 
 [plugins]
 

@@ -51,6 +51,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.transitions)
+            implementation(libs.voyager.tabNavigator)
             implementation(libs.composeImageLoader)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.ktor.core)
@@ -59,6 +60,8 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.koin.core)
             implementation(libs.lyricist)
+            implementation(libs.windowsSize)
+            implementation(libs.napier)
         }
 
         commonTest.dependencies {
