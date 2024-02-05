@@ -30,7 +30,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import br.mrenann.dev.portfolio.theme.AppTheme
+import br.mrenann.dev.portfolio.resource.theme.AppTheme
 import br.mrenann.dev.portfolio.ui.tabs.ContactTab
 import br.mrenann.dev.portfolio.ui.tabs.EducationTab
 import br.mrenann.dev.portfolio.ui.tabs.ProjectsTab
