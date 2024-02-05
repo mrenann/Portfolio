@@ -1,4 +1,4 @@
-package br.mrenann.dev.portfolio.theme
+package br.mrenann.dev.portfolio.resource.theme
 
 import androidx.compose.runtime.Composable
 
