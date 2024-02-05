@@ -1,4 +1,4 @@
-package br.mrenann.dev.portfolio.strings
+package br.mrenann.dev.portfolio.resource.strings
 
 import cafe.adriel.lyricist.LyricistStrings
 
