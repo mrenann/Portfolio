@@ -3,6 +3,7 @@ package br.mrenann.dev.portfolio
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -48,48 +49,63 @@ internal fun App(
 ) = AppTheme {
     val windowClass = calculateWindowSizeClass()
     val showNavigationRail = windowClass.widthSizeClass != WindowWidthSizeClass.Compact
+
     TabNavigator(HomeTab, tabDisposable = {
         TabDisposable(
             navigator = it, tabs = listOf(HomeTab, ProjectsTab, EducationTab, ContactTab)
         )
     }) {
-        Surface(modifier = Modifier.fillMaxSize()) {
-            Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
-                if (!showNavigationRail) {
-                    NavigationBar {
-                        TabNavigationItem(HomeTab)
-                        TabNavigationItem(ProjectsTab)
-                        TabNavigationItem(EducationTab)
-                        TabNavigationItem(ContactTab)
-                    }
-                }
-            }) {
-                Column(
-                    modifier = Modifier.fillMaxSize().padding(it).padding(
-                        start = if (showNavigationRail) 80.dp else 0.dp
-                    )
-                ) {
-                    CurrentTab()
-                }
-            }
-        }
-        if (showNavigationRail) {
-            NavigationRail(
-                modifier = Modifier
-                    .background(MaterialTheme.colorScheme.inverseOnSurface)
-                    .offset(x = (-1).dp)
+        AppContent(showNavigationRail)
+    }
+}
+
+
+@Composable
+private fun AppContent(showNavigationRail: Boolean) {
+    Surface(modifier = Modifier.fillMaxSize()) {
+        Scaffold(
+            modifier = Modifier.fillMaxSize(),
+            bottomBar = { if (!showNavigationRail) BottomNavigationBar() }
+        ) {
+            Column(
+                modifier = Modifier.fillMaxSize().padding(it).padding(
+                    start = if (showNavigationRail) 80.dp else 0.dp
+                )
             ) {
-                Column(
-                    modifier = Modifier.fillMaxHeight(),
-                    verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically)
-                ) {
-                    TabNavigationItem(HomeTab)
-                    TabNavigationItem(ProjectsTab)
-                    TabNavigationItem(EducationTab)
-                    TabNavigationItem(ContactTab)
-                }
+                CurrentTab()
             }
         }
+    }
+    if (showNavigationRail) {
+        NavigationRail(
+            modifier = Modifier.background(MaterialTheme.colorScheme.inverseOnSurface)
+                .offset(x = (-1).dp)
+        ) {
+            Column(
+                modifier = Modifier.fillMaxHeight(),
+                verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically)
+            ) {
+                NavigationRailItems()
+            }
+        }
+    }
+}
+
+@Composable
+private fun BottomNavigationBar() {
+    val tabs = listOf(HomeTab, ProjectsTab, EducationTab, ContactTab)
+    NavigationBar {
+        tabs.forEach { tab ->
+            TabNavigationItem(tab)
+        }
+    }
+}
+
+@Composable
+private fun NavigationRailItems() {
+    val tabs = listOf(HomeTab, ProjectsTab, EducationTab, ContactTab)
+    tabs.forEach { tab ->
+        TabNavigationItem(tab)
     }
 }
 
@@ -116,6 +132,5 @@ fun TabNavigationItem(tab: Tab) {
         label = { Text(tab.options.title) },
     )
 }
-
 
 internal expect fun openUrl(url: String?)
