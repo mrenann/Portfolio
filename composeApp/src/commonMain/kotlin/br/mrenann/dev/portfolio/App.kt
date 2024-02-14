@@ -3,19 +3,15 @@ package br.mrenann.dev.portfolio
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -30,6 +26,7 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import br.mrenann.dev.portfolio.resource.theme.AppTheme
 import br.mrenann.dev.portfolio.ui.tabs.ContactTab
@@ -41,6 +38,7 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabDisposable
 import cafe.adriel.voyager.navigator.tab.TabNavigator
+import io.github.aakira.napier.log
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
@@ -49,7 +47,8 @@ internal fun App(
 ) = AppTheme {
     val windowClass = calculateWindowSizeClass()
     val showNavigationRail = windowClass.widthSizeClass != WindowWidthSizeClass.Compact
-
+    log { windowClass.toString() }
+    log(tag = "your tag") { "top-asasasas" }
     TabNavigator(HomeTab, tabDisposable = {
         TabDisposable(
             navigator = it, tabs = listOf(HomeTab, ProjectsTab, EducationTab, ContactTab)
@@ -62,10 +61,11 @@ internal fun App(
 
 @Composable
 private fun AppContent(showNavigationRail: Boolean) {
+    val tabs = listOf(HomeTab, ProjectsTab, EducationTab, ContactTab)
     Surface(modifier = Modifier.fillMaxSize()) {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            bottomBar = { if (!showNavigationRail) BottomNavigationBar() }
+            bottomBar = { if (!showNavigationRail) BottomNavigationBar(tabs) }
         ) {
             Column(
                 modifier = Modifier.fillMaxSize().padding(it).padding(
@@ -85,15 +85,14 @@ private fun AppContent(showNavigationRail: Boolean) {
                 modifier = Modifier.fillMaxHeight(),
                 verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically)
             ) {
-                NavigationRailItems()
+                NavigationRailItems(tabs)
             }
         }
     }
 }
 
 @Composable
-private fun BottomNavigationBar() {
-    val tabs = listOf(HomeTab, ProjectsTab, EducationTab, ContactTab)
+private fun BottomNavigationBar(tabs: List<Tab>) {
     NavigationBar {
         tabs.forEach { tab ->
             TabNavigationItem(tab)
@@ -102,8 +101,7 @@ private fun BottomNavigationBar() {
 }
 
 @Composable
-private fun NavigationRailItems() {
-    val tabs = listOf(HomeTab, ProjectsTab, EducationTab, ContactTab)
+private fun NavigationRailItems(tabs: List<Tab>) {
     tabs.forEach { tab ->
         TabNavigationItem(tab)
     }

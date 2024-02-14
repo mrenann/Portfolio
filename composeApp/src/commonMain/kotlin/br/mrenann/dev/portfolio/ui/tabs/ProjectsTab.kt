@@ -14,6 +14,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -23,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import br.mrenann.dev.portfolio.domain.model.ProjectCard
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import io.github.aakira.napier.Napier
+import io.github.aakira.napier.log
 import jsonString
 import kotlinx.serialization.json.Json
 
@@ -42,11 +47,20 @@ object ProjectsTab : Tab {
             }
         }
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     @Composable
     override fun Content() {
         val json = Json { ignoreUnknownKeys = true }
         val projects = json.decodeFromString<Array<ProjectCard>>(jsonString)
-        LazyVerticalGrid(columns = GridCells.Adaptive(300.dp)) {
+
+        val windowClass = calculateWindowSizeClass()
+        val a = windowClass.widthSizeClass
+        val b = windowClass.heightSizeClass
+        val ac = WindowWidthSizeClass.Medium
+
+        val showNavigationRail = windowClass.widthSizeClass != WindowWidthSizeClass.Compact
+
+        LazyVerticalGrid(columns = GridCells.Fixed(count = if(showNavigationRail) 2 else 1)) {
             items(projects) { data ->
                 Card(modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp, horizontal = 15.dp)){
                     Column(modifier = Modifier.padding(7.dp)) {
