@@ -10,13 +10,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import compose.icons.FeatherIcons
+import compose.icons.feathericons.User
 
 object HomeTab : Tab {
 
     override val options: TabOptions
         @Composable
         get() {
-            val icon = rememberVectorPainter(Icons.Default.Person)
+            val icon = rememberVectorPainter(FeatherIcons.User)
 
             return remember {
                 TabOptions(

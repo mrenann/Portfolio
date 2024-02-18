@@ -1,6 +1,8 @@
 package br.mrenann.dev.portfolio.ui.components.SocialButton
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -17,21 +19,28 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import br.mrenann.dev.portfolio.domain.model.SocialOption
+import br.mrenann.dev.portfolio.openUrl
 
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 internal fun SocialButton(
     socialOption: SocialOption
 ) {
-    Column(modifier = Modifier.padding(10.dp)) {
-        Column(modifier = Modifier.align(Alignment.CenterHorizontally).padding(10.dp)) {
+    Column(modifier = Modifier.padding(10.dp).clickable {
+        openUrl(url = socialOption.onClick)
+    }) {
+        Row(modifier = Modifier.padding(10.dp)) {
             Column(
-                modifier = Modifier.background(color = Color.Black, shape = CircleShape)
+                modifier = Modifier.padding(end = 10.dp).background(color = Color.Black, shape = CircleShape)
             ) {
-                Icon(modifier = Modifier.padding(5.dp), imageVector = Icons.Default.Email, contentDescription = "Email icon", tint = Color.White)
+                Icon(modifier = Modifier.padding(10.dp), imageVector = socialOption.icon, contentDescription = "${socialOption.title} icon", tint = Color.White)
             }
-            Text(text = socialOption.title, textAlign = TextAlign.Center)
-            Text(text = socialOption.subtitle, textAlign = TextAlign.Center)
+            Column {
+                Text(text = socialOption.title, textAlign = TextAlign.Center)
+                Text(text = socialOption.subtitle, textAlign = TextAlign.Center)
+            }
+
         }
 
 

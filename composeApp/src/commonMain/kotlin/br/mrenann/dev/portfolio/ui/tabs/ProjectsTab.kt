@@ -26,6 +26,8 @@ import androidx.compose.ui.unit.dp
 import br.mrenann.dev.portfolio.domain.model.ProjectCard
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import compose.icons.FeatherIcons
+import compose.icons.feathericons.Code
 import io.github.aakira.napier.Napier
 import io.github.aakira.napier.log
 import jsonString
@@ -36,7 +38,7 @@ object ProjectsTab : Tab {
     override val options: TabOptions
         @Composable
         get() {
-            val icon = rememberVectorPainter(Icons.Default.Home)
+            val icon = rememberVectorPainter(FeatherIcons.Code)
 
             return remember {
                 TabOptions(
