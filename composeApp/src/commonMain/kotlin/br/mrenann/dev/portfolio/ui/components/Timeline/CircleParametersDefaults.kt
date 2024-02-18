@@ -1,6 +1,7 @@
 package br.mrenann.dev.portfolio.ui.components.Timeline
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -12,9 +13,11 @@ object CircleParametersDefaults {
         radius: Dp = defaultCircleRadius,
         backgroundColor: Color = Color.Cyan,
         stroke: StrokeParameters? = null,
+        icon: ImageVector? = null,
     ) = CircleParameters(
         radius,
         backgroundColor,
-        stroke
+        stroke,
+        icon
     )
 }

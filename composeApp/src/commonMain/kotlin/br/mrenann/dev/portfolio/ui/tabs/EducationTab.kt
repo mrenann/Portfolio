@@ -1,5 +1,6 @@
 package br.mrenann.dev.portfolio.ui.tabs
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -25,7 +26,7 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.BookOpen
-import kotlinx.datetime.LocalDate
+import compose.icons.feathericons.Check
 
 object EducationTab : Tab {
 
@@ -67,9 +68,9 @@ object EducationTab : Tab {
 
     private fun getIconColor(stage: ProccessStage): Color {
         return when (stage.status) {
-            ProccessStageStatus.FINISHED -> Color.Green
+            ProccessStageStatus.FINISHED -> Color.DarkGray
             ProccessStageStatus.CURRENT -> Color.Yellow
-            ProccessStageStatus.UPCOMING -> Color.White
+            ProccessStageStatus.UPCOMING -> Color.Red
         }
     }
 
@@ -101,14 +102,15 @@ object EducationTab : Tab {
         LazyColumn(
             modifier = Modifier
                 .wrapContentHeight()
-                .fillMaxWidth()
-                .padding(10.dp),
+                .fillMaxWidth(),
+            contentPadding = PaddingValues(12.dp)
         ) {
             itemsIndexed(stages) { index, proccessStage ->
                 TimelineNode(
                     circleParameters = CircleParametersDefaults.circleParameters(
                         backgroundColor = getIconColor(proccessStage),
                         stroke = getIconStrokeColor(proccessStage),
+                        icon = FeatherIcons.BookOpen
                     ),
                     lineParameters = getLineBrush(
                         circleRadius = 12.dp,
@@ -121,6 +123,7 @@ object EducationTab : Tab {
                     MessageBubble(proccessStage,modifier)
                 }
             }
+
         }
 
     }
