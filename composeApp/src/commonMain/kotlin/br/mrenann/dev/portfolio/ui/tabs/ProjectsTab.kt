@@ -2,6 +2,7 @@ package br.mrenann.dev.portfolio.ui.tabs
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -34,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.mrenann.dev.portfolio.domain.model.ProjectCard
+import br.mrenann.dev.portfolio.openUrl
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.seiko.imageloader.rememberImagePainter
@@ -74,6 +76,7 @@ object ProjectsTab : Tab {
             items(projects) { data ->
                 Card(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp, horizontal = 15.dp)
+                        .clip(RoundedCornerShape(10.dp)).clickable { openUrl(data.url) }
                 ) {
                     Row {
                         Image(
@@ -85,7 +88,13 @@ object ProjectsTab : Tab {
                             contentDescription = "image",
                         )
                         Column(modifier = Modifier.padding(7.dp)) {
-                            data.nome?.let { Text(text = it, fontSize = 16.sp, fontWeight = FontWeight.ExtraBold) }
+                            data.nome?.let {
+                                Text(
+                                    text = it,
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.ExtraBold
+                                )
+                            }
                             Text(data.categoria)
                             data.acesso?.let { Text(text = "$it Downloads") }
                             data.descricao?.let { Text(it) }
