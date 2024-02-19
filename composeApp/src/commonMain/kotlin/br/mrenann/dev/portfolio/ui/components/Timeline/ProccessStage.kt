@@ -5,7 +5,8 @@ import kotlinx.datetime.LocalDate
 data class ProccessStage(
     val title: String,
     val subtitle: String? = null,
-    val status: ProccessStageStatus
+    val status: ProccessStageStatus,
+    val intervalDate: String? = null
 )
 
 enum class ProccessStageStatus {

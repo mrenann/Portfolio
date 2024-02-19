@@ -4,9 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ProjectCard(
-    var id: String?,
-    var nome: String? = "",
-    var descricao: String? = "",
-    var imagem: String? = null,
-    var acesso: String? = "",
+    val id: String?,
+    val nome: String? = "",
+    val descricao: String? = "",
+    val imagem: String = "",
+    val acesso: String? = "",
+    val categoria: String = ""
 )

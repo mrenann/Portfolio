@@ -61,13 +61,15 @@ internal fun MessageBubble(
                         color = getTextColor(proccessStage)
                     )
                 }
-                Text(
-                    modifier = Modifier.fillMaxWidth().padding(top = 7.dp),
-                    text = "2019 - 2023",
-                    textAlign = TextAlign.End,
-                    fontWeight = W600,
-                    fontSize = 12.sp
-                )
+                proccessStage.intervalDate?.let {dates ->
+                    Text(
+                        modifier = Modifier.fillMaxWidth().padding(top = 7.dp),
+                        text = dates,
+                        textAlign = TextAlign.End,
+                        fontWeight = W600,
+                        fontSize = 12.sp
+                    )
+                }
             }
 
         }

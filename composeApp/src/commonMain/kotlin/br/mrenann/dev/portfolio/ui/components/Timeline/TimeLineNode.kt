@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.seiko.imageloader.EmptyPainter.draw
 import com.seiko.imageloader.EmptyPainter.intrinsicSize
+import io.github.aakira.napier.Napier
 import org.jetbrains.compose.resources.painterResource
 
 
