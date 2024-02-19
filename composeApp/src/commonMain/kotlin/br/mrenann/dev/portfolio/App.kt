@@ -71,7 +71,7 @@ private fun AppContent(showNavigationRail: Boolean) {
     Surface(modifier = Modifier.fillMaxSize()) {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            floatingActionButton = { if (!showNavigationRail) BottomNavigationBar(tabs) },
+            bottomBar = { if (!showNavigationRail) BottomNavigationBar(tabs) },
             floatingActionButtonPosition = FabPosition.Center
         ) {
             Column(
@@ -101,7 +101,7 @@ private fun AppContent(showNavigationRail: Boolean) {
 @Composable
 private fun BottomNavigationBar(tabs: List<Tab>) {
     NavigationBar(
-        modifier = Modifier.padding(horizontal = 20.dp).clip(RoundedCornerShape(100)),
+        modifier = Modifier.clip(RoundedCornerShape(20.dp, 20.dp)),
     ) {
         tabs.forEach { tab ->
             TabNavigationItem(tab)
