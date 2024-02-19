@@ -38,7 +38,15 @@ internal fun MessageBubble(
                 modifier = Modifier
                     .fillMaxWidth().padding(12.dp)
             ) {
-
+                if(proccessStage.isCourse){
+                    Text(
+                        modifier = Modifier.fillMaxWidth().padding(top = 7.dp),
+                        text = "Curso",
+                        textAlign = TextAlign.Start,
+                        fontWeight = W600,
+                        fontSize = 12.sp
+                    )
+                }
                 Text(
                     modifier = Modifier
                         .fillMaxWidth()

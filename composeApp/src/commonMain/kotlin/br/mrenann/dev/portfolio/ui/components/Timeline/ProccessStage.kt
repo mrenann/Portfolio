@@ -6,7 +6,8 @@ data class ProccessStage(
     val title: String,
     val subtitle: String? = null,
     val status: ProccessStageStatus,
-    val intervalDate: String? = null
+    val intervalDate: String? = null,
+    val isCourse: Boolean = false
 )
 
 enum class ProccessStageStatus {

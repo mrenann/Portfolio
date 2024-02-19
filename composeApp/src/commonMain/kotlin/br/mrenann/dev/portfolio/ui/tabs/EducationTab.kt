@@ -101,33 +101,34 @@ object EducationTab : Tab {
                 subtitle = "EEEP Professor Moreira de Sousa",
                 intervalDate = "2016 - 2018",
                 status = ProccessStageStatus.FINISHED,
-            )
-        )
-
-        val courses = arrayOf(
+            ),
             ProccessStage(
                 title = "Santander CODERS MOBILE",
                 subtitle = "Digital House Brasil",
                 intervalDate = "2021",
                 status = ProccessStageStatus.FINISHED,
+                isCourse = true,
             ),
             ProccessStage(
                 title = "Everis Kotlin Developer",
                 subtitle = "DIO",
                 intervalDate = "2021",
                 status = ProccessStageStatus.FINISHED,
+                isCourse = true,
             ),
             ProccessStage(
                 title = "Desenvolvimento Front-End",
                 subtitle = "Digital House Brasil",
                 intervalDate = "2021",
                 status = ProccessStageStatus.FINISHED,
+                isCourse = true,
             ),
             ProccessStage(
                 title = "Desenvolvimento de Aplicativos Android Studio & Kotlin",
                 subtitle = "Cel.Lep Idiomas",
                 intervalDate = "2020",
                 status = ProccessStageStatus.FINISHED,
+                isCourse = true,
             ),
         )
 
@@ -153,37 +154,6 @@ object EducationTab : Tab {
                     spacer = 24.dp
                 ) { modifier ->
                     MessageBubble(proccessStage,modifier)
-                }
-            }
-
-        }
-
-        LazyColumn(
-            modifier = Modifier
-                .wrapContentHeight()
-                .fillMaxWidth(),
-            contentPadding = PaddingValues(12.dp)
-        ) {
-            itemsIndexed(courses) { index, proccessStage ->
-                TimelineNode(
-                    circleParameters = CircleParametersDefaults.circleParameters(
-                        backgroundColor = getIconColor(proccessStage),
-                        stroke = getIconStrokeColor(proccessStage),
-                        icon = FeatherIcons.BookOpen
-                    ),
-                    lineParameters = getLineBrush(
-                        circleRadius = 12.dp,
-                        index = index,
-                        items = courses
-                    ),
-                    contentStartOffset = 16.dp,
-                    spacer = 24.dp
-                ) { modifier ->
-                    Column {
-
-                        MessageBubble(proccessStage,modifier)
-                    }
-
                 }
             }
 
