@@ -1,11 +1,15 @@
 package br.mrenann.dev.portfolio.ui.tabs
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -66,9 +70,10 @@ object EducationTab : Tab {
         }
     }
 
+    @Composable
     private fun getIconColor(stage: ProccessStage): Color {
         return when (stage.status) {
-            ProccessStageStatus.FINISHED -> Color.DarkGray
+            ProccessStageStatus.FINISHED -> MaterialTheme.colorScheme.surfaceVariant
             ProccessStageStatus.CURRENT -> Color.Yellow
             ProccessStageStatus.UPCOMING -> Color.Red
         }
@@ -88,17 +93,44 @@ object EducationTab : Tab {
             ProccessStage(
                 title = "Graduação em Ciência da Computação",
                 subtitle = "Universidade Federal do Cariri (UFCA) ",
+                intervalDate = "2019 - 2023",
                 status = ProccessStageStatus.FINISHED,
             ),
             ProccessStage(
-                title = "TESTANDO 2",
-                status = ProccessStageStatus.FINISHED,
-            ),
-            ProccessStage(
-                title = "TESTANDO 3",
+                title = "Ensino Médio Técnico em Informática",
+                subtitle = "EEEP Professor Moreira de Sousa",
+                intervalDate = "2016 - 2018",
                 status = ProccessStageStatus.FINISHED,
             )
         )
+
+        val courses = arrayOf(
+            ProccessStage(
+                title = "Santander CODERS MOBILE",
+                subtitle = "Digital House Brasil",
+                intervalDate = "2021",
+                status = ProccessStageStatus.FINISHED,
+            ),
+            ProccessStage(
+                title = "Everis Kotlin Developer",
+                subtitle = "DIO",
+                intervalDate = "2021",
+                status = ProccessStageStatus.FINISHED,
+            ),
+            ProccessStage(
+                title = "Desenvolvimento Front-End",
+                subtitle = "Digital House Brasil",
+                intervalDate = "2021",
+                status = ProccessStageStatus.FINISHED,
+            ),
+            ProccessStage(
+                title = "Desenvolvimento de Aplicativos Android Studio & Kotlin",
+                subtitle = "Cel.Lep Idiomas",
+                intervalDate = "2020",
+                status = ProccessStageStatus.FINISHED,
+            ),
+        )
+
         LazyColumn(
             modifier = Modifier
                 .wrapContentHeight()
@@ -121,6 +153,37 @@ object EducationTab : Tab {
                     spacer = 24.dp
                 ) { modifier ->
                     MessageBubble(proccessStage,modifier)
+                }
+            }
+
+        }
+
+        LazyColumn(
+            modifier = Modifier
+                .wrapContentHeight()
+                .fillMaxWidth(),
+            contentPadding = PaddingValues(12.dp)
+        ) {
+            itemsIndexed(courses) { index, proccessStage ->
+                TimelineNode(
+                    circleParameters = CircleParametersDefaults.circleParameters(
+                        backgroundColor = getIconColor(proccessStage),
+                        stroke = getIconStrokeColor(proccessStage),
+                        icon = FeatherIcons.BookOpen
+                    ),
+                    lineParameters = getLineBrush(
+                        circleRadius = 12.dp,
+                        index = index,
+                        items = courses
+                    ),
+                    contentStartOffset = 16.dp,
+                    spacer = 24.dp
+                ) { modifier ->
+                    Column {
+
+                        MessageBubble(proccessStage,modifier)
+                    }
+
                 }
             }
 
