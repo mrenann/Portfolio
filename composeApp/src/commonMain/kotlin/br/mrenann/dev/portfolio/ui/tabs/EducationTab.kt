@@ -102,6 +102,10 @@ object EducationTab : Tab {
                 intervalDate = "2016 - 2018",
                 status = ProccessStageStatus.FINISHED,
             ),
+
+        )
+
+        val courses = arrayOf(
             ProccessStage(
                 title = "Santander CODERS MOBILE",
                 subtitle = "Digital House Brasil",
@@ -149,6 +153,25 @@ object EducationTab : Tab {
                         circleRadius = 12.dp,
                         index = index,
                         items = stages
+                    ),
+                    contentStartOffset = 16.dp,
+                    spacer = 24.dp
+                ) { modifier ->
+                    MessageBubble(proccessStage,modifier)
+                }
+            }
+
+            itemsIndexed(courses) { index, proccessStage ->
+                TimelineNode(
+                    circleParameters = CircleParametersDefaults.circleParameters(
+                        backgroundColor = getIconColor(proccessStage),
+                        stroke = getIconStrokeColor(proccessStage),
+                        icon = FeatherIcons.BookOpen
+                    ),
+                    lineParameters = getLineBrush(
+                        circleRadius = 12.dp,
+                        index = index,
+                        items = courses
                     ),
                     contentStartOffset = 16.dp,
                     spacer = 24.dp
