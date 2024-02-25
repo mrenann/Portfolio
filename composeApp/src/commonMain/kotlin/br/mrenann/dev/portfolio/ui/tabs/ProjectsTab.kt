@@ -32,17 +32,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.mrenann.dev.portfolio.domain.model.ProjectCard
+import br.mrenann.dev.portfolio.isHorizontal
 import br.mrenann.dev.portfolio.openUrl
+import cafe.adriel.lyricist.strings
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.seiko.imageloader.rememberImagePainter
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.Code
-import io.github.aakira.napier.Napier
-import io.github.aakira.napier.log
 import jsonString
 import kotlinx.serialization.json.Json
 
@@ -52,27 +53,28 @@ object ProjectsTab : Tab {
         @Composable
         get() {
             val icon = rememberVectorPainter(FeatherIcons.Code)
-
+            val title = strings.projectsTab.tabTitle
             return remember {
                 TabOptions(
                     index = 1u,
-                    title = "Projects",
+                    title = title,
                     icon = icon
                 )
             }
         }
 
-    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     @Composable
     override fun Content() {
         val json = Json { ignoreUnknownKeys = true }
         val projects = json.decodeFromString<Array<ProjectCard>>(jsonString)
 
-        val windowClass = calculateWindowSizeClass()
-
-        val showNavigationRail = windowClass.widthSizeClass != WindowWidthSizeClass.Compact
-
-        LazyVerticalGrid(columns = GridCells.Fixed(count = if (showNavigationRail) 2 else 1)) {
+        Text(
+            text = "Projetos",
+            fontSize = 25.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(vertical = 12.dp, horizontal = 20.dp)
+        )
+        LazyVerticalGrid(columns = GridCells.Fixed(count = if (isHorizontal()) 2 else 1)) {
             items(projects) { data ->
                 Card(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp, horizontal = 15.dp)
@@ -81,14 +83,14 @@ object ProjectsTab : Tab {
                     Row {
                         Image(
                             modifier = Modifier.padding(all = 8.dp)
-                                .fillMaxHeight().fillMaxWidth(0.25F).clip(RoundedCornerShape(5.dp))
+                                .fillMaxHeight(0.25F).fillMaxWidth(0.25F).weight(1f, fill = false).clip(RoundedCornerShape(5.dp))
                                 .align(Alignment.CenterVertically),
                             alignment = Alignment.Center,
                             painter = rememberImagePainter(data.imagem),
                             contentDescription = "image",
                         )
                         Column(modifier = Modifier.padding(7.dp)) {
-                            data.nome?.let {
+                            data.nome.let {
                                 Text(
                                     text = it,
                                     fontSize = 16.sp,

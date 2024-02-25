@@ -61,7 +61,7 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.lyricist)
             implementation(libs.windowsSize)
-            implementation(libs.napier)
+
         }
 
         commonTest.dependencies {
@@ -99,17 +99,17 @@ kotlin {
     }
 }
 
+dependencies {
+    add("kspCommonMainMetadata", "cafe.adriel.lyricist:lyricist-processor:1.6.2")
+}
+
 ksp {
     arg("lyricist.internalVisibility", "true")
     arg("lyricist.generateStringsProperty", "true")
 }
 
-dependencies {
-    add("kspCommonMainMetadata", "cafe.adriel.lyricist:lyricist-processor:1.6.2")
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().all {
-    if(name != "kspCommonMainKotlinMetadata") {
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+    if (name != "kspCommonMainKotlinMetadata") {
         dependsOn("kspCommonMainKotlinMetadata")
     }
 }

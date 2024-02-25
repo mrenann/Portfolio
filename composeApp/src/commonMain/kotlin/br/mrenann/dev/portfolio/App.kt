@@ -3,18 +3,12 @@ package br.mrenann.dev.portfolio
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -32,10 +26,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import br.mrenann.dev.portfolio.resource.theme.AppTheme
-import br.mrenann.dev.portfolio.ui.tabs.ContactTab
 import br.mrenann.dev.portfolio.ui.tabs.EducationTab
 import br.mrenann.dev.portfolio.ui.tabs.ProjectsTab
 import br.mrenann.dev.portfolio.ui.tabs.HomeTab
@@ -44,30 +36,25 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabDisposable
 import cafe.adriel.voyager.navigator.tab.TabNavigator
-import io.github.aakira.napier.log
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 internal fun App(
     systemAppearance: (isLight: Boolean) -> Unit = {}
 ) = AppTheme {
-    val windowClass = calculateWindowSizeClass()
-    val showNavigationRail = windowClass.widthSizeClass != WindowWidthSizeClass.Compact
-    log { windowClass.toString() }
-    log(tag = "your tag") { "top-asasasas" }
     TabNavigator(HomeTab, tabDisposable = {
         TabDisposable(
-            navigator = it, tabs = listOf(HomeTab, ProjectsTab, EducationTab, ContactTab)
+            navigator = it, tabs = listOf(HomeTab, ProjectsTab, EducationTab)
         )
     }) {
-        AppContent(showNavigationRail)
+        AppContent(isHorizontal())
     }
 }
 
 
 @Composable
 private fun AppContent(showNavigationRail: Boolean) {
-    val tabs = listOf(HomeTab, ProjectsTab, EducationTab, ContactTab)
+    val tabs = listOf(HomeTab, ProjectsTab, EducationTab)
     Surface(modifier = Modifier.fillMaxSize()) {
         Scaffold(
             modifier = Modifier.fillMaxSize(),
@@ -141,3 +128,10 @@ fun TabNavigationItem(tab: Tab) {
 }
 
 internal expect fun openUrl(url: String?)
+
+@Composable
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+internal fun isHorizontal(): Boolean {
+    val windowClass = calculateWindowSizeClass()
+    return windowClass.widthSizeClass != WindowWidthSizeClass.Compact
+}

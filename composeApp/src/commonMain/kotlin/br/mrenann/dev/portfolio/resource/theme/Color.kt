@@ -71,7 +71,7 @@ internal val md_theme_dark_scrim = Color(0xFF000000)
 internal val dark_background = Color(37,35,49)
 internal val dark_surface = Color(30,28,38)
 internal val dark_surface_tint = Color(30,28,38)
-internal val dark_on_tint = Color(105,108,135)
+internal val dark_on_tint = Color(255,255,255)
 internal val dark_secondary_container = Color(105,108,135)
 internal val dark_on_secondary_container = Color(255,255,255)
 

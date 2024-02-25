@@ -3,21 +3,34 @@ package br.mrenann.dev.portfolio.ui.tabs
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import br.mrenann.dev.portfolio.isHorizontal
 import br.mrenann.dev.portfolio.ui.components.Timeline.CircleParametersDefaults
 import br.mrenann.dev.portfolio.ui.components.Timeline.LineParameters
 import br.mrenann.dev.portfolio.ui.components.Timeline.LineParametersDefaults
@@ -26,6 +39,7 @@ import br.mrenann.dev.portfolio.ui.components.Timeline.ProccessStage
 import br.mrenann.dev.portfolio.ui.components.Timeline.ProccessStageStatus
 import br.mrenann.dev.portfolio.ui.components.Timeline.StrokeParameters
 import br.mrenann.dev.portfolio.ui.components.Timeline.TimelineNode
+import cafe.adriel.lyricist.strings
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.FeatherIcons
@@ -38,18 +52,18 @@ object EducationTab : Tab {
         @Composable
         get() {
             val icon = rememberVectorPainter(FeatherIcons.BookOpen)
-
+            val title = strings.educationTab.tabTitle
             return remember {
                 TabOptions(
                     index = 2u,
-                    title = "Education",
+                    title = title,
                     icon = icon
                 )
             }
         }
 
     @Composable
-    private fun getLineBrush(
+    fun getLineBrush(
         circleRadius: Dp,
         index: Int,
         items: Array<ProccessStage>
@@ -71,7 +85,7 @@ object EducationTab : Tab {
     }
 
     @Composable
-    private fun getIconColor(stage: ProccessStage): Color {
+    fun getIconColor(stage: ProccessStage): Color {
         return when (stage.status) {
             ProccessStageStatus.FINISHED -> MaterialTheme.colorScheme.surfaceVariant
             ProccessStageStatus.CURRENT -> Color.Yellow
@@ -79,11 +93,67 @@ object EducationTab : Tab {
         }
     }
 
-    private fun getIconStrokeColor(stage: ProccessStage): StrokeParameters? {
+    fun getIconStrokeColor(stage: ProccessStage): StrokeParameters? {
         return if (stage.status == ProccessStageStatus.UPCOMING) {
             StrokeParameters(color = Color.Gray, width = 2.dp)
         } else {
             null
+        }
+    }
+
+    @Composable
+    private fun SectionTitle(text: String) {
+        Text(
+            text = text,
+            fontSize = 25.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(vertical = 12.dp, horizontal = 20.dp)
+        )
+    }
+
+    @Composable
+    private fun StageContent(stages: Array<ProccessStage>) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+        ) {
+            stages.forEachIndexed { index, stage ->
+                TimelineNode(
+                    lineParameters = getLineBrush(
+                        circleRadius = 12.dp,
+                        index = index,
+                        items = stages
+                    ),
+                    contentStartOffset = 16.dp,
+                    spacer = 24.dp
+                ) { modifier ->
+                    MessageBubble(stage, modifier)
+                }
+            }
+        }
+    }
+
+    @Composable
+    private fun CourseContent(courses: Array<ProccessStage>) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+        ) {
+            courses.forEachIndexed { index, course ->
+                TimelineNode(
+                    lineParameters = getLineBrush(
+                        circleRadius = 12.dp,
+                        index = index,
+                        items = courses
+                    ),
+                    contentStartOffset = 16.dp,
+                    spacer = 24.dp
+                ) { modifier ->
+                    MessageBubble(course, modifier)
+                }
+            }
         }
     }
 
@@ -103,7 +173,7 @@ object EducationTab : Tab {
                 status = ProccessStageStatus.FINISHED,
             ),
 
-        )
+            )
 
         val courses = arrayOf(
             ProccessStage(
@@ -136,51 +206,23 @@ object EducationTab : Tab {
             ),
         )
 
-        LazyColumn(
-            modifier = Modifier
-                .wrapContentHeight()
-                .fillMaxWidth(),
-            contentPadding = PaddingValues(12.dp)
+        LazyVerticalGrid(
+            modifier = Modifier.fillMaxSize(),
+            columns = GridCells.Fixed(count = if (isHorizontal()) 2 else 1),
+            contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp)
         ) {
-            itemsIndexed(stages) { index, proccessStage ->
-                TimelineNode(
-                    circleParameters = CircleParametersDefaults.circleParameters(
-                        backgroundColor = getIconColor(proccessStage),
-                        stroke = getIconStrokeColor(proccessStage),
-                        icon = FeatherIcons.BookOpen
-                    ),
-                    lineParameters = getLineBrush(
-                        circleRadius = 12.dp,
-                        index = index,
-                        items = stages
-                    ),
-                    contentStartOffset = 16.dp,
-                    spacer = 24.dp
-                ) { modifier ->
-                    MessageBubble(proccessStage,modifier)
+            item {
+                Column {
+                    SectionTitle(text = "Formação Acadêmica")
+                    StageContent(stages = stages)
                 }
             }
-
-            itemsIndexed(courses) { index, proccessStage ->
-                TimelineNode(
-                    circleParameters = CircleParametersDefaults.circleParameters(
-                        backgroundColor = getIconColor(proccessStage),
-                        stroke = getIconStrokeColor(proccessStage),
-                        icon = FeatherIcons.BookOpen
-                    ),
-                    lineParameters = getLineBrush(
-                        circleRadius = 12.dp,
-                        index = index,
-                        items = courses
-                    ),
-                    contentStartOffset = 16.dp,
-                    spacer = 24.dp
-                ) { modifier ->
-                    MessageBubble(proccessStage,modifier)
+            item {
+                Column {
+                    SectionTitle(text = "Cursos")
+                    CourseContent(courses = courses)
                 }
             }
-
         }
-
     }
 }
