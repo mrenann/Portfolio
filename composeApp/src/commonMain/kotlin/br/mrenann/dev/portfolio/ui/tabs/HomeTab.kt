@@ -1,18 +1,25 @@
 package br.mrenann.dev.portfolio.ui.tabs
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -57,7 +64,6 @@ object HomeTab : Tab {
 
     @Composable
     private fun HeaderSection() {
-
         val courses = arrayOf(
             ProccessStage(
                 title = "Santander CODERS MOBILE",
@@ -94,54 +100,53 @@ object HomeTab : Tab {
 
     @Composable
     private fun HeaderColumn(modifier: Modifier = Modifier) {
-            Column(
-                modifier = modifier.padding(12.dp)
-            ) {
-                Image(
-                    modifier = Modifier.clip(CircleShape).size(60.dp),
-                    alignment = Alignment.Center,
-                    painter = rememberImagePainter("https://avatars.githubusercontent.com/u/50411238?v=4"),
-                    contentDescription = "image",
-                )
-                Text(text = "I'm Marcos Renann", fontSize = 20.sp)
-                Text(text = "Android Developer", fontSize = 20.sp)
-                Text(text = strings.homeTab.about, fontSize = 12.sp, textAlign = TextAlign.Justify)
-            }
-
+        Column(
+            modifier = modifier.padding(12.dp)
+        ) {
+            Image(
+                modifier = Modifier.clip(CircleShape).size(60.dp),
+                alignment = Alignment.Center,
+                painter = rememberImagePainter("https://avatars.githubusercontent.com/u/50411238?v=4"),
+                contentDescription = "image",
+            )
+            Text(text = "I'm Marcos Renann", fontSize = 20.sp)
+            Text(text = "Android Developer", fontSize = 20.sp)
+            Text(text = strings.homeTab.about, fontSize = 12.sp, textAlign = TextAlign.Justify)
+        }
     }
 
     @Composable
     private fun CoursesColumn(courses: Array<ProccessStage>, modifier: Modifier = Modifier) {
-            Column(
-                modifier = modifier.padding(12.dp)
-            ) {
-                Text(
-                    text = "Experiência",
-                    fontSize = 25.sp,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(vertical = 12.dp, horizontal = 20.dp)
-                )
+        Column(
+            modifier = modifier.padding(12.dp)
+        ) {
+            Text(
+                text = "Experiência",
+                fontSize = 25.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(vertical = 12.dp, horizontal = 20.dp)
+            )
 
-                LazyColumn {
-                    itemsIndexed(courses) { index, course ->
-                        TimelineNode(
-                            circleParameters = CircleParametersDefaults.circleParameters(
-                                backgroundColor = EducationTab.getIconColor(course),
-                                stroke = EducationTab.getIconStrokeColor(course)
-                            ),
-                            lineParameters = EducationTab.getLineBrush(
-                                circleRadius = 12.dp,
-                                index = index,
-                                items = courses
-                            ),
-                            contentStartOffset = 16.dp,
-                            spacer = 24.dp
-                        ) { modifier ->
-                            MessageBubble(course, modifier)
-                        }
+            LazyColumn {
+                itemsIndexed(courses) { index, course ->
+                    TimelineNode(
+                        circleParameters = CircleParametersDefaults.circleParameters(
+                            backgroundColor = EducationTab.getIconColor(course),
+                            stroke = EducationTab.getIconStrokeColor(course)
+                        ),
+                        lineParameters = EducationTab.getLineBrush(
+                            circleRadius = 12.dp,
+                            index = index,
+                            items = courses
+                        ),
+                        contentStartOffset = 16.dp,
+                        spacer = 24.dp
+                    ) { modifier ->
+                        MessageBubble(course, modifier)
                     }
                 }
             }
+        }
     }
 
     @Composable
@@ -175,13 +180,19 @@ object HomeTab : Tab {
             SocialOption.GITHUB
         )
 
-        Column(
-            modifier = Modifier.fillMaxSize().padding(20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            HeaderSection()
-            ContactSection(buttons)
-        }
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp)
 
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                HeaderSection()
+                Spacer(modifier = Modifier.height(16.dp)) // Spacer between sections
+                ContactSection(buttons)
+            }
+        }
     }
 }
