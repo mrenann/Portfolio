@@ -6,6 +6,10 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.runtime.Composable
 
 class AndroidApp : Application() {
     companion object {
@@ -36,4 +40,12 @@ internal actual fun openUrl(url: String?) {
         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     }
     AndroidApp.INSTANCE.startActivity(intent)
+}
+
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+@Composable
+internal actual fun isHorizontal(): Boolean  {
+    val windowClass = calculateWindowSizeClass()
+
+    return windowClass.widthSizeClass != WindowWidthSizeClass.Compact
 }

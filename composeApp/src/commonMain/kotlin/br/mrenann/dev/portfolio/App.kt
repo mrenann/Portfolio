@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import br.mrenann.dev.portfolio.resource.theme.AppTheme
 import br.mrenann.dev.portfolio.ui.tabs.EducationTab
@@ -130,8 +131,4 @@ fun TabNavigationItem(tab: Tab) {
 internal expect fun openUrl(url: String?)
 
 @Composable
-@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-internal fun isHorizontal(): Boolean {
-    val windowClass = calculateWindowSizeClass()
-    return windowClass.widthSizeClass != WindowWidthSizeClass.Compact
-}
+internal expect fun isHorizontal(): Boolean

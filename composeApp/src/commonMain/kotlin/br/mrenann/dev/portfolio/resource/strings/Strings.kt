@@ -16,11 +16,26 @@ data class Strings(
 
 data class HomeTabString(
     val tabTitle: String,
-    val about: String
+    val about: String,
+    val aboutTitle: String,
+    val aboutSubtitle: String,
+    val experience: ExperienceColumn
 )
 
 data class ProjectsTabString(
     val tabTitle: String,
+)
+
+data class ExperienceColumn(
+    val stoneTitle: String,
+    val stoneSubtitle: String,
+    val stoneTime: String,
+    val calangTitle: String,
+    val calangSubtitle: String,
+    val calangTime: String,
+    val matcompTitle: String,
+    val matcompSubtitle: String,
+    val matcompTime: String,
 )
 
 data class EducationTabString(

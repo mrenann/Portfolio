@@ -66,26 +66,29 @@ object HomeTab : Tab {
 
     @Composable
     private fun HeaderSection() {
-        val courses = arrayOf(
-            ProccessStage(
-                title = "Santander CODERS MOBILE",
-                subtitle = "Stone CO",
-                intervalDate = "2021",
-                status = ProccessStageStatus.FINISHED,
-            ),
-            ProccessStage(
-                title = "A",
-                subtitle = "Calang.io Empresa Júnior de Desenvolvimento de Software",
-                intervalDate = "2021",
-                status = ProccessStageStatus.FINISHED,
-            ),
-            ProccessStage(
-                title = "Desenvolvimento Front-End",
-                subtitle = "Empresa Junior MatComp Soluções ",
-                intervalDate = "2021",
-                status = ProccessStageStatus.FINISHED,
-            ),
-        )
+        val courses = strings.homeTab.experience.let {experience ->
+            arrayOf(
+                ProccessStage(
+                    title = experience.stoneTitle,
+                    subtitle = experience.stoneSubtitle,
+                    intervalDate = experience.stoneTime,
+                    status = ProccessStageStatus.FINISHED,
+                ),
+                ProccessStage(
+                    title = experience.calangTitle,
+                    subtitle = experience.calangSubtitle,
+                    intervalDate = experience.calangTime,
+                    status = ProccessStageStatus.FINISHED,
+                ),
+                ProccessStage(
+                    title = experience.matcompTitle,
+                    subtitle = experience.matcompSubtitle,
+                    intervalDate = experience.matcompTime,
+                    status = ProccessStageStatus.FINISHED,
+                ),
+            )
+        }
+
 
         if (isHorizontal()) {
             Row {
@@ -114,8 +117,8 @@ object HomeTab : Tab {
                     contentDescription = "image",
                 )
                 Column(modifier= Modifier.align(Alignment.CenterVertically).padding(horizontal = 12.dp)) {
-                    Text(text = "I'm Marcos Renann", fontSize = 36.sp, fontWeight = FontWeight.Medium)
-                    Text(text = "Android Developer", fontSize = 42.sp, fontWeight = FontWeight.Black)
+                    Text(text = strings.homeTab.aboutTitle, fontSize = 36.sp, fontWeight = FontWeight.Medium)
+                    Text(text = strings.homeTab.aboutSubtitle, fontSize = 42.sp, fontWeight = FontWeight.Black)
                 }
 
             }
