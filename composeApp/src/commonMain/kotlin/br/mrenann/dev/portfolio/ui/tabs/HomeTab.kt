@@ -27,6 +27,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -103,15 +105,22 @@ object HomeTab : Tab {
         Column(
             modifier = modifier.padding(12.dp)
         ) {
-            Image(
-                modifier = Modifier.clip(CircleShape).size(60.dp),
-                alignment = Alignment.Center,
-                painter = rememberImagePainter("https://avatars.githubusercontent.com/u/50411238?v=4"),
-                contentDescription = "image",
-            )
-            Text(text = "I'm Marcos Renann", fontSize = 20.sp)
-            Text(text = "Android Developer", fontSize = 20.sp)
-            Text(text = strings.homeTab.about, fontSize = 12.sp, textAlign = TextAlign.Justify)
+            Row(modifier = Modifier.padding(bottom = 12.dp)) {
+                Image(
+                    modifier = Modifier.clip(CircleShape).size(70.dp),
+                    alignment = Alignment.Center,
+                    painter = rememberImagePainter("https://avatars.githubusercontent.com/u/50411238?v=4"),
+                    contentScale = ContentScale.FillBounds,
+                    contentDescription = "image",
+                )
+                Column(modifier= Modifier.align(Alignment.CenterVertically).padding(horizontal = 12.dp)) {
+                    Text(text = "I'm Marcos Renann", fontSize = 36.sp, fontWeight = FontWeight.Medium)
+                    Text(text = "Android Developer", fontSize = 42.sp, fontWeight = FontWeight.Black)
+                }
+
+            }
+
+            Text(text = strings.homeTab.about,  textAlign = TextAlign.Justify)
         }
     }
 
