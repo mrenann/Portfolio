@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -26,17 +27,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import br.mrenann.dev.portfolio.resource.theme.AppTheme
 import br.mrenann.dev.portfolio.ui.tabs.EducationTab
 import br.mrenann.dev.portfolio.ui.tabs.ProjectsTab
 import br.mrenann.dev.portfolio.ui.tabs.HomeTab
+import br.mrenann.dev.portfolio.ui.tabs.MoreTab
 import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabDisposable
 import cafe.adriel.voyager.navigator.tab.TabNavigator
+import compose.icons.FeatherIcons
+import compose.icons.SimpleIcons
+import compose.icons.feathericons.MoreHorizontal
+import compose.icons.simpleicons.Android
+import compose.icons.simpleicons.Java
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
@@ -74,7 +82,21 @@ private fun AppContent(showNavigationRail: Boolean) {
     if (showNavigationRail) {
         NavigationRail(
             modifier = Modifier.background(MaterialTheme.colorScheme.inverseOnSurface)
-                .offset(x = (-1).dp)
+                .offset(x = (-1).dp),
+            header = {
+                IconButton(onClick = {openUrl("https://drive.google.com/file/d/1_uQZDbNHYlHY0f8hFVvbdvLP3441X32w/view?usp=drive_link")}) {
+                    Icon(
+                        painter = rememberVectorPainter(SimpleIcons.Android),
+                        contentDescription = ""
+                    )
+                }
+                IconButton(onClick = {openUrl("https://drive.google.com/file/d/1_uQZDbNHYlHY0f8hFVvbdvLP3441X32w/view?usp=drive_link")}) {
+                    Icon(
+                        painter = rememberVectorPainter(SimpleIcons.Java),
+                        contentDescription = ""
+                    )
+                }
+            }
         ) {
             Column(
                 modifier = Modifier.fillMaxHeight(),
@@ -130,5 +152,6 @@ fun TabNavigationItem(tab: Tab) {
 
 internal expect fun openUrl(url: String?)
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 internal expect fun isHorizontal(): Boolean

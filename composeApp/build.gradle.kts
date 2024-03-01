@@ -56,6 +56,7 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.ktor.core)
             implementation(libs.composeIcons.featherIcons)
+            implementation(libs.composeIcons.simpleIcons)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.koin.core)

@@ -5,6 +5,7 @@ import cafe.adriel.lyricist.LyricistStrings
 @LyricistStrings(languageTag = Locales.PT, default = true)
 internal val PtStrings = Strings(
     educationTab = EducationTabString(tabTitle = "Educação"),
+    moreTab = MoreTabString(tabTitle = "Mais"),
     homeTab = HomeTabString(
         tabTitle = "Sobre mim",
         aboutTitle = "Eu sou Marcos Renann",

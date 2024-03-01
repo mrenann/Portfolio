@@ -12,6 +12,11 @@ data class Strings(
     val homeTab: HomeTabString,
     val contactTab: ContactTabString,
     val projectsTab: ProjectsTabString,
+    val moreTab: MoreTabString,
+)
+
+data class MoreTabString(
+    val tabTitle: String,
 )
 
 data class HomeTabString(
