@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import br.mrenann.dev.portfolio.domain.model.SocialOption
 import br.mrenann.dev.portfolio.openUrl
+import cafe.adriel.lyricist.strings
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -34,11 +35,11 @@ internal fun SocialButton(
             Column(
                 modifier = Modifier.padding(end = 10.dp).background(color = Color.Black, shape = CircleShape)
             ) {
-                Icon(modifier = Modifier.padding(10.dp), imageVector = socialOption.icon, contentDescription = "${socialOption.title} icon", tint = Color.White)
+                Icon(modifier = Modifier.padding(10.dp), imageVector = socialOption.icon, contentDescription = "${strings.homeTab.socialButtons.title(socialOption.name)} icon", tint = Color.White)
             }
             Column {
-                Text(text = socialOption.title, textAlign = TextAlign.Center)
-                Text(text = socialOption.subtitle, textAlign = TextAlign.Center)
+                Text(text = strings.homeTab.socialButtons.title(socialOption.name), textAlign = TextAlign.Center)
+                Text(text = strings.homeTab.socialButtons.subtitle(socialOption.name), textAlign = TextAlign.Center)
             }
 
         }

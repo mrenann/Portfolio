@@ -24,7 +24,8 @@ data class HomeTabString(
     val about: String,
     val aboutTitle: String,
     val aboutSubtitle: String,
-    val experience: ExperienceColumn
+    val experience: ExperienceColumn,
+    val socialButtons: SocialButtonColumn,
 )
 
 data class ProjectsTabString(
@@ -41,6 +42,11 @@ data class ExperienceColumn(
     val matcompTitle: String,
     val matcompSubtitle: String,
     val matcompTime: String,
+)
+
+data class SocialButtonColumn(
+    val title: (type: String) -> String,
+    val subtitle: (type: String) -> String,
 )
 
 data class EducationTabString(

@@ -22,7 +22,32 @@ internal val EnStrings = Strings(
             stoneTime = "2021 - 2023",
             calangTime = "2021 - 2022",
             matcompTime = "2020 - 2021"
-        )
+        ), socialButtons = SocialButtonColumn(
+            title = { type ->
+                val value = when (type) {
+                    "CV" -> "Resume in Portuguese"
+                    "CVENGLISH" -> "CV"
+                    "EMAIL" -> "Email"
+                    "TELEPHONE" -> "Phone"
+                    "LINKEDIN" -> "LinkedIn"
+                    "GITHUB" -> "Github"
+                    else -> ""
+                }
+                value
+            },
+            subtitle = { type ->
+                val value = when (type) {
+                    "CV" -> "Resume in Portuguese"
+                    "CVENGLISH" -> "CV in English"
+                    "EMAIL" -> "marcos.renann.br@gmail.com"
+                    "TELEPHONE" -> "+55 (88) 997241630"
+                    "LINKEDIN" -> "Linkedin.com/in/marcos-renann"
+                    "GITHUB" -> "https://github.com/mrenann"
+                    else -> ""
+                }
+                value
+            }
+        ),
     ),
 
     contactTab = ContactTabString(

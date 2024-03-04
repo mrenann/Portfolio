@@ -1,22 +1,21 @@
 package br.mrenann.dev.portfolio.ui.tabs
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
@@ -65,7 +64,7 @@ object HomeTab : Tab {
 
 
     @Composable
-    private fun HeaderSection() {
+    private fun HeaderSection(modifier: Modifier = Modifier) {
         val courses = strings.homeTab.experience.let {experience ->
             arrayOf(
                 ProccessStage(
@@ -89,14 +88,13 @@ object HomeTab : Tab {
             )
         }
 
-
         if (isHorizontal()) {
-            Row {
+            Row(modifier) {
                 HeaderColumn(modifier = Modifier.weight(0.5F))
                 CoursesColumn(courses = courses, modifier = Modifier.weight(0.5F))
             }
         } else {
-            Column {
+            Column(modifier) {
                 HeaderColumn()
                 CoursesColumn(courses)
             }
@@ -139,7 +137,9 @@ object HomeTab : Tab {
                 modifier = Modifier.padding(vertical = 12.dp, horizontal = 20.dp)
             )
 
-            LazyColumn {
+            LazyColumn(
+                userScrollEnabled = false
+            ) {
                 itemsIndexed(courses) { index, course ->
                     TimelineNode(
                         circleParameters = CircleParametersDefaults.circleParameters(
@@ -162,48 +162,67 @@ object HomeTab : Tab {
     }
 
     @Composable
-    private fun ContactSection(buttons: List<SocialOption>) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+    private fun ContactCard(buttons: List<SocialOption>, textModifier: Modifier = Modifier, gridModifier: Modifier = Modifier) {
+
+        Text(
+            modifier = if (isHorizontal()) textModifier else Modifier,
+            textAlign = TextAlign.Justify,
+            text = strings.contactTab.title
+        )
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(count = if (isHorizontal()) 2 else 1),
+            modifier = if(isHorizontal()) gridModifier else Modifier
         ) {
-            Text(
-                modifier = Modifier.padding(20.dp).weight(0.4F),
-                textAlign = TextAlign.Justify,
-                text = strings.contactTab.title
-            )
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(count = if (isHorizontal()) 2 else 1),
-                modifier = Modifier.weight(0.6F)
-            ) {
-                items(buttons) { data ->
-                    SocialButton(data)
-                }
+            items(buttons) { data ->
+                SocialButton(data)
             }
         }
     }
 
     @Composable
+    private fun ContactSection(buttons: List<SocialOption>, modifier: Modifier = Modifier) {
+       if (isHorizontal()) {
+           Row(
+               modifier = modifier.fillMaxWidth(),
+               verticalAlignment = Alignment.CenterVertically
+           ) {
+               ContactCard(buttons, textModifier = Modifier.padding(20.dp).weight(0.4F), gridModifier = Modifier.weight(0.6F))
+           }
+       } else {
+           Column (
+               modifier = modifier.fillMaxWidth(),
+               verticalArrangement = Arrangement.Center
+           ) {
+               ContactCard(buttons, textModifier = Modifier.padding(20.dp).weight(0.4F), gridModifier = Modifier.weight(0.6F))
+           }
+       }
+    }
+
+    @Composable
     override fun Content() {
+
         val buttons = listOf(
+            SocialOption.CV,
+            SocialOption.CVENGLISH,
             SocialOption.EMAIL,
             SocialOption.TELEPHONE,
             SocialOption.LINKEDIN,
             SocialOption.GITHUB
         )
 
-        Box(
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(20.dp)
+                .padding(horizontal = 8.dp)
+                .verticalScroll(rememberScrollState())
 
         ) {
             Column(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                HeaderSection()
-                Spacer(modifier = Modifier.height(16.dp)) // Spacer between sections
-                ContactSection(buttons)
+                HeaderSection(modifier = Modifier.fillMaxSize().heightIn(100.dp,2000.dp))
+                Spacer(modifier = Modifier.height(16.dp))
+                ContactSection(buttons, modifier = Modifier.heightIn(100.dp,2000.dp).padding(horizontal = 10.dp))
             }
         }
     }

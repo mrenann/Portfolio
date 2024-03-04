@@ -23,6 +23,31 @@ internal val PtStrings = Strings(
             stoneTime = "2021 - 2023",
             calangTime = "2021 - 2022",
             matcompTime = "2020 - 2021"
+        ), socialButtons = SocialButtonColumn(
+            title = { type ->
+                val value = when (type) {
+                    "CV" -> "Currículo em Português"
+                    "CVENGLISH" -> "CV"
+                    "EMAIL" -> "Email"
+                    "TELEPHONE" -> "Telefone"
+                    "LINKEDIN" -> "LinkedIn"
+                    "GITHUB" -> "Github"
+                    else -> ""
+                }
+                value
+            },
+            subtitle = { type ->
+                val value = when (type) {
+                    "CV" -> "Currículo em Português"
+                    "CVENGLISH" -> "CV em Inglês"
+                    "EMAIL" -> "marcos.renann.br@gmail.com"
+                    "TELEPHONE" -> "+55 (88) 997241630"
+                    "LINKEDIN" -> "Linkedin.com/in/marcos-renann"
+                    "GITHUB" -> "https://github.com/mrenann"
+                    else -> ""
+                }
+                value
+            },
         )
     ),
     contactTab = ContactTabString(

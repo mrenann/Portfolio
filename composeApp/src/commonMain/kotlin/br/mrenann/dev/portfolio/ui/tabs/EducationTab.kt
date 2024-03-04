@@ -115,17 +115,18 @@ object EducationTab : Tab {
     private fun StageContent(stages: Array<ProccessStage>) {
         Column(
             modifier = Modifier
+                .padding(horizontal = 16.dp)
                 .fillMaxWidth()
                 .wrapContentHeight()
         ) {
             stages.forEachIndexed { index, stage ->
                 TimelineNode(
                     lineParameters = getLineBrush(
-                        circleRadius = 12.dp,
+                        circleRadius = 0.dp,
                         index = index,
                         items = stages
                     ),
-                    contentStartOffset = 16.dp,
+                    contentStartOffset = 0.dp,
                     spacer = 24.dp
                 ) { modifier ->
                     MessageBubble(stage, modifier)
@@ -138,17 +139,18 @@ object EducationTab : Tab {
     private fun CourseContent(courses: Array<ProccessStage>) {
         Column(
             modifier = Modifier
+                .padding(horizontal = 16.dp)
                 .fillMaxWidth()
                 .wrapContentHeight()
         ) {
             courses.forEachIndexed { index, course ->
                 TimelineNode(
                     lineParameters = getLineBrush(
-                        circleRadius = 12.dp,
+                        circleRadius = 0.dp,
                         index = index,
                         items = courses
                     ),
-                    contentStartOffset = 16.dp,
+                    contentStartOffset = 0.dp,
                     spacer = 24.dp
                 ) { modifier ->
                     MessageBubble(course, modifier)
@@ -208,8 +210,7 @@ object EducationTab : Tab {
 
         LazyVerticalGrid(
             modifier = Modifier.fillMaxSize(),
-            columns = GridCells.Fixed(count = if (isHorizontal()) 2 else 1),
-            contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp)
+            columns = GridCells.Fixed(count = if (isHorizontal()) 2 else 1)
         ) {
             item {
                 Column {
