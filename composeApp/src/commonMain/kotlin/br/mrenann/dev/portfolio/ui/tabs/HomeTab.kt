@@ -1,6 +1,7 @@
 package br.mrenann.dev.portfolio.ui.tabs
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -106,24 +108,46 @@ object HomeTab : Tab {
         Column(
             modifier = modifier.padding(12.dp)
         ) {
-            Row(modifier = Modifier.padding(bottom = 12.dp)) {
-                Image(
-                    modifier = Modifier.clip(CircleShape).size(70.dp),
-                    alignment = Alignment.Center,
-                    painter = rememberImagePainter("https://avatars.githubusercontent.com/u/50411238?v=4"),
-                    contentScale = ContentScale.FillBounds,
-                    contentDescription = "image",
-                )
-                Column(modifier= Modifier.align(Alignment.CenterVertically).padding(horizontal = 12.dp)) {
-                    Text(text = strings.homeTab.aboutTitle, fontSize = 36.sp, fontWeight = FontWeight.Medium)
-                    Text(text = strings.homeTab.aboutSubtitle, fontSize = 42.sp, fontWeight = FontWeight.Black)
-                }
+            if(isHorizontal()) {Column(modifier = Modifier.padding(bottom = 12.dp).fillMaxWidth()) {
+                Header(modifier = Modifier.align(Alignment.CenterHorizontally))
+            }
 
+            }else {
+                Row(modifier = Modifier.padding(bottom = 12.dp).fillMaxWidth()) { Header(modifier = Modifier.align(Alignment.CenterVertically)) }
             }
 
             Text(text = strings.homeTab.about,  textAlign = TextAlign.Justify)
         }
     }
+
+    @Composable
+    private fun Header(modifier: Modifier) {
+            Image(
+                modifier = modifier.clip(CircleShape).size(if (isHorizontal()) 250.dp else 80.dp),
+                alignment = Alignment.Center,
+                painter = rememberImagePainter("https://avatars.githubusercontent.com/u/50411238?v=4"),
+                contentScale = ContentScale.FillBounds,
+                contentDescription = "image",
+            )
+            Column(
+                modifier = modifier.padding(horizontal = 12.dp).fillMaxWidth()
+            ) {
+                Text(
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    text = strings.homeTab.aboutTitle,
+                    fontSize = if (isHorizontal()) 36.sp else 20.sp,
+                    fontWeight = FontWeight.Medium,
+                    textAlign = if (isHorizontal()) TextAlign.Center else TextAlign.Justify,
+                )
+                Text(
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    text = strings.homeTab.aboutSubtitle,
+                    fontSize = if (isHorizontal()) 42.sp else 28.sp,
+                    fontWeight = FontWeight.Black,
+                    textAlign = if (isHorizontal()) TextAlign.Center else TextAlign.Justify,
+                )
+            }
+        }
 
     @Composable
     private fun CoursesColumn(courses: Array<ProccessStage>, modifier: Modifier = Modifier) {
