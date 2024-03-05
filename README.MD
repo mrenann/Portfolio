@@ -33,7 +33,12 @@ This is a portfolio app showcasing my Android development skills. It includes va
 - [Material3 Window Size](https://github.com/chrisbanes/material3-window-size-class)
 
 ## Images
-
+| Imagem                                                     | Legenda                                   |
+|------------------------------------------------------------|-------------------------------------------|
+| <img src="docs/assets/phone.png" width="250" />           | Tela apresentado em um smartphone Android |
+| <img src="docs/assets/desktop.png.png" width="250" />     | Tela apresentado em um Desktop            |
+| <img src="docs/assets/web.png.png" width="250" />         | Tela apresentado o site                   |
+| <img src="docs/assets/all.png" width="250" />             | Tela apresentando todas as plataformas    |
 ## How to Run:
 
 ### Before running!
