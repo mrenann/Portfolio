@@ -133,14 +133,14 @@ object HomeTab : Tab {
                 modifier = modifier.padding(horizontal = 12.dp).fillMaxWidth()
             ) {
                 Text(
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(),
                     text = strings.homeTab.aboutTitle,
                     fontSize = if (isHorizontal()) 36.sp else 20.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = if (isHorizontal()) TextAlign.Center else TextAlign.Justify,
                 )
                 Text(
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    modifier = Modifier.align(Alignment.CenterHorizontally).fillMaxWidth(),
                     text = strings.homeTab.aboutSubtitle,
                     fontSize = if (isHorizontal()) 42.sp else 28.sp,
                     fontWeight = FontWeight.Black,
@@ -208,16 +208,16 @@ object HomeTab : Tab {
        if (isHorizontal()) {
            Row(
                modifier = modifier.fillMaxWidth(),
-               verticalAlignment = Alignment.CenterVertically
+               verticalAlignment = Alignment.Top
            ) {
-               ContactCard(buttons, textModifier = Modifier.padding(20.dp).weight(0.4F), gridModifier = Modifier.weight(0.6F))
+               ContactCard(buttons, textModifier = Modifier.weight(0.5F), gridModifier = Modifier.weight(0.5F))
            }
        } else {
            Column (
                modifier = modifier.fillMaxWidth(),
                verticalArrangement = Arrangement.Center
            ) {
-               ContactCard(buttons, textModifier = Modifier.padding(20.dp).weight(0.4F), gridModifier = Modifier.weight(0.6F))
+               ContactCard(buttons, textModifier = Modifier.weight(0.4F), gridModifier = Modifier.weight(0.6F))
            }
        }
     }
