@@ -34,10 +34,8 @@ This is a portfolio app showcasing my Android development skills. It includes va
 
 ## Images
 | <img src="docs/assets/phone.png" width="250" />        | <img src="docs/assets/desktop.png" width="500" />      |
-|--------------------------------------------------------|--------------------------------------------------------|
 | Tela apresentado em um smartphone Android              | Tela apresentado em um Desktop                         |
 | <img src="docs/assets/web.png" width="500" />          | <img src="docs/assets/all.png" width="500" />          |
-| ------------------------------------------------------ | ------------------------------------------------------ |
 | Tela apresentado o site                                | Tela apresentando todas as plataformas                 |
 
 
