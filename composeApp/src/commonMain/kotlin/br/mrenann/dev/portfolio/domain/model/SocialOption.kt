@@ -15,7 +15,7 @@ enum class SocialOption(
     val icon: ImageVector
 ) {
     CV(
-        onClick = "https://drive.google.com/file/d/1X6FLSHdBPEZuFtoEc6YKuHVCsZOaBLZL/view?usp=drive_link",
+        onClick = "https://drive.google.com/file/d/1te188-zwJVfto0BGvOPS32zRoZaPbR3A/view?usp=sharing",
         icon = FeatherIcons.FileText
     ),
     CVENGLISH(
