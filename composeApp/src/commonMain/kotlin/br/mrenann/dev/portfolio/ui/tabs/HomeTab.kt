@@ -70,6 +70,12 @@ object HomeTab : Tab {
         val courses = strings.homeTab.experience.let {experience ->
             arrayOf(
                 ProccessStage(
+                    title = experience.setebitTitle,
+                    subtitle = experience.setebitSubtitle,
+                    intervalDate = experience.setebitTime,
+                    status = ProccessStageStatus.FINISHED,
+                ),
+                ProccessStage(
                     title = experience.stoneTitle,
                     subtitle = experience.stoneSubtitle,
                     intervalDate = experience.stoneTime,
