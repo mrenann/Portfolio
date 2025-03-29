@@ -110,5 +110,6 @@ voyager = [
 ]
 composeIcons = [
     "composeIcons-feather",
-    "composeIcons-lineAwesome"
+    "composeIcons-lineAwesome",
+    "composeIcons-simpleIcons"
 ]
