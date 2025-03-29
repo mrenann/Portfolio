@@ -1,6 +1,10 @@
 package br.mrenann.portfolio.education.presentation
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -85,22 +89,36 @@ class EducationTab() : Tab {
                 ),
             )
 
-        Text(
-            modifier = Modifier.padding(horizontal = 12.dp),
-            text = "Education",
-            fontWeight = FontWeight.Bold,
-            fontSize = 22.sp
-        )
-        CoursesColumn(education)
+        LazyColumn(
+            modifier = Modifier.fillMaxSize().padding(vertical = 6.dp)
+        ) {
+            item {
+                Column(
+                    Modifier.fillMaxWidth()
+                ) {
+                    Text(
+                        modifier = Modifier.padding(horizontal = 12.dp),
+                        text = "Education",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp
+                    )
+                    CoursesColumn(education)
+                    Text(
+                        modifier = Modifier.padding(horizontal = 12.dp),
+                        text = "Certifications",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 22.sp
+                    )
 
-        Text(
-            modifier = Modifier.padding(horizontal = 12.dp),
-            text = "Certifications",
-            fontWeight = FontWeight.Bold,
-            fontSize = 22.sp
-        )
+                    CoursesColumn(certifications)
+                }
 
-        CoursesColumn(certifications)
+
+            }
+
+        }
+
+
     }
 
 }

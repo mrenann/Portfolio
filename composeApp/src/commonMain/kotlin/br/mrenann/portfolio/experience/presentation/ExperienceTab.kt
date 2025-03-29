@@ -5,8 +5,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -72,191 +74,202 @@ class ExperienceTab() : Tab {
                 ),
             )
 
-        Text(
-            modifier = Modifier.padding(horizontal = 12.dp),
-            text = "Experience",
-            fontWeight = FontWeight.Bold,
-            fontSize = 22.sp
-        )
-
-        CoursesColumn(courses)
-
-        Text(
-            modifier = Modifier.padding(horizontal = 12.dp),
-            text = "Projects",
-            fontWeight = FontWeight.Bold,
-            fontSize = 22.sp
-        )
-
-        Column(
-            Modifier.padding(horizontal = 12.dp).padding(top = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(6.dp)
+        LazyColumn(
+            modifier = Modifier.fillMaxSize().padding(vertical = 6.dp)
         ) {
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .background(
-                        MaterialTheme.colorScheme.surfaceContainer,
-                        RoundedCornerShape(8.dp)
-                    )
-                    .clickable {
-                        openUrl("https://github.com/mrenann/ecommerce")
-                    }
-                    .padding(12.dp)
-            ) {
-                Row {
-                    Icon(
-                        modifier = Modifier.padding(10.dp),
-                        imageVector = FeatherIcons.Github,
-                        contentDescription = null
-                    )
-                    Column {
-                        Text(
-                            "Ecommerce App",
-                            fontSize = 14.sp,
-                            lineHeight = 12.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
-                            "Android | Kotlin | Firebase | ROOM | MVVM | Jetpack Compose | Multi modular",
-                            fontSize = 12.sp,
-                            lineHeight = 12.sp,
-                            fontWeight = FontWeight.SemiBold
+            item {
+                Text(
+                    modifier = Modifier.padding(horizontal = 12.dp),
+                    text = "Experience",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp
+                )
 
-                        )
-                        Text(
-                            "Designed and developed a complete ecommerce experience",
-                            fontSize = 12.sp,
-                            lineHeight = 12.sp
-                        )
-                        Text(
-                            "Product Browsing, favorites, cart management, purchases, coupons",
-                            fontSize = 12.sp,
-                            lineHeight = 12.sp
-                        )
-                        Text("Firebase integration", fontSize = 12.sp, lineHeight = 12.sp)
-                        Text(
-                            "Project multi modulat for better maintainability",
-                            fontSize = 12.sp,
-                            lineHeight = 12.sp
-                        )
-                    }
-                }
+                CoursesColumn(courses)
 
+                Text(
+                    modifier = Modifier.padding(horizontal = 12.dp),
+                    text = "Projects",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp
+                )
 
-            }
-
-            Column(
-                Modifier
-                    .fillMaxWidth()
-                    .background(
-                        MaterialTheme.colorScheme.surfaceContainer,
-                        RoundedCornerShape(8.dp)
-                    )
-                    .clickable {
-                        openUrl("https://github.com/mrenann/globoplay-mobile")
-                    }
-                    .padding(12.dp)
-            ) {
-                Row {
-                    Icon(
-                        modifier = Modifier.padding(10.dp),
-                        imageVector = FeatherIcons.Github,
-                        contentDescription = null
-                    )
-                    Column {
-                        Text(
-                            "GloboPlay Clone App",
-                            fontSize = 14.sp,
-                            lineHeight = 12.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
-                            "Android | Kotlin | ROOM | MVVM | Jetpack Compose",
-                            fontSize = 12.sp,
-                            lineHeight = 12.sp,
-                            fontWeight = FontWeight.SemiBold
-                            
-                        )
-                        Text("Integration with TMDB API", fontSize = 12.sp, lineHeight = 12.sp)
-                        Text(
-                            "Unit Tests and Github Actions for CI/CD",
-                            fontSize = 12.sp,
-                            lineHeight = 12.sp
-                        )
-                    }
-                }
-
-
-            }
-
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(6.dp),
-            ) {
                 Column(
-                    Modifier
-                        .weight(.5F)
-                        .background(
-                            MaterialTheme.colorScheme.surfaceContainer,
-                            RoundedCornerShape(8.dp)
-                        )
-                        .clickable {
-                            openUrl("https://play.google.com/store/apps/details?id=com.dh.madeinbrasil")
-                        }
-                        .padding(12.dp)
+                    Modifier.padding(horizontal = 12.dp).padding(top = 12.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
-                    Row {
-                        Icon(
-                            modifier = Modifier.padding(10.dp),
-                            imageVector = FeatherIcons.Play,
-                            contentDescription = null
-                        )
-                        Column {
-                            Text(
-                                "Made In Brasil",
-                                fontSize = 14.sp,
-                                lineHeight = 12.sp,
-                                fontWeight = FontWeight.Bold
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .background(
+                                MaterialTheme.colorScheme.surfaceContainer,
+                                RoundedCornerShape(8.dp)
                             )
-                            Text("Entertainment", fontSize = 12.sp, lineHeight = 12.sp)
-                            Text("+10 Downloads", fontSize = 12.sp, lineHeight = 12.sp)
+                            .clickable {
+                                openUrl("https://github.com/mrenann/ecommerce")
+                            }
+                            .padding(12.dp)
+                    ) {
+                        Row {
+                            Icon(
+                                modifier = Modifier.padding(10.dp),
+                                imageVector = FeatherIcons.Github,
+                                contentDescription = null
+                            )
+                            Column {
+                                Text(
+                                    "Ecommerce App",
+                                    fontSize = 14.sp,
+                                    lineHeight = 12.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    "Android | Kotlin | Firebase | ROOM | MVVM | Jetpack Compose | Multi modular",
+                                    fontSize = 12.sp,
+                                    lineHeight = 12.sp,
+                                    fontWeight = FontWeight.SemiBold
+
+                                )
+                                Text(
+                                    "Designed and developed a complete ecommerce experience",
+                                    fontSize = 12.sp,
+                                    lineHeight = 12.sp
+                                )
+                                Text(
+                                    "Product Browsing, favorites, cart management, purchases, coupons",
+                                    fontSize = 12.sp,
+                                    lineHeight = 12.sp
+                                )
+                                Text("Firebase integration", fontSize = 12.sp, lineHeight = 12.sp)
+                                Text(
+                                    "Project multi modulat for better maintainability",
+                                    fontSize = 12.sp,
+                                    lineHeight = 12.sp
+                                )
+                            }
                         }
+
+
                     }
 
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .background(
+                                MaterialTheme.colorScheme.surfaceContainer,
+                                RoundedCornerShape(8.dp)
+                            )
+                            .clickable {
+                                openUrl("https://github.com/mrenann/globoplay-mobile")
+                            }
+                            .padding(12.dp)
+                    ) {
+                        Row {
+                            Icon(
+                                modifier = Modifier.padding(10.dp),
+                                imageVector = FeatherIcons.Github,
+                                contentDescription = null
+                            )
+                            Column {
+                                Text(
+                                    "GloboPlay Clone App",
+                                    fontSize = 14.sp,
+                                    lineHeight = 12.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    "Android | Kotlin | ROOM | MVVM | Jetpack Compose",
+                                    fontSize = 12.sp,
+                                    lineHeight = 12.sp,
+                                    fontWeight = FontWeight.SemiBold
 
-                }
-                Column(
-                    Modifier
-                        .weight(.5F)
-                        .background(
-                            MaterialTheme.colorScheme.surfaceContainer,
-                            RoundedCornerShape(8.dp)
-                        )
-                        .clickable {
-                            openUrl("https://play.google.com/store/apps/details?id=com.projetomob")
+                                )
+                                Text(
+                                    "Integration with TMDB API",
+                                    fontSize = 12.sp,
+                                    lineHeight = 12.sp
+                                )
+                                Text(
+                                    "Unit Tests and Github Actions for CI/CD",
+                                    fontSize = 12.sp,
+                                    lineHeight = 12.sp
+                                )
+                            }
+                        }
+
+
+                    }
+
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        Column(
+                            Modifier
+                                .weight(.5F)
+                                .background(
+                                    MaterialTheme.colorScheme.surfaceContainer,
+                                    RoundedCornerShape(8.dp)
+                                )
+                                .clickable {
+                                    openUrl("https://play.google.com/store/apps/details?id=com.dh.madeinbrasil")
+                                }
+                                .padding(12.dp)
+                        ) {
+                            Row {
+                                Icon(
+                                    modifier = Modifier.padding(10.dp),
+                                    imageVector = FeatherIcons.Play,
+                                    contentDescription = null
+                                )
+                                Column {
+                                    Text(
+                                        "Made In Brasil",
+                                        fontSize = 14.sp,
+                                        lineHeight = 12.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Text("Entertainment", fontSize = 12.sp, lineHeight = 12.sp)
+                                    Text("+10 Downloads", fontSize = 12.sp, lineHeight = 12.sp)
+                                }
+                            }
+
 
                         }
-                        .padding(12.dp)
-                ) {
-                    Row {
-                        Icon(
-                            modifier = Modifier.padding(10.dp),
-                            imageVector = FeatherIcons.Play,
-                            contentDescription = null
-                        )
-                        Column {
-                            Text(
-                                "Orcim",
-                                fontSize = 14.sp,
-                                lineHeight = 12.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                            Text("Education", fontSize = 12.sp, lineHeight = 12.sp)
-                            Text("+10 Downloads", fontSize = 12.sp, lineHeight = 12.sp)
+                        Column(
+                            Modifier
+                                .weight(.5F)
+                                .background(
+                                    MaterialTheme.colorScheme.surfaceContainer,
+                                    RoundedCornerShape(8.dp)
+                                )
+                                .clickable {
+                                    openUrl("https://play.google.com/store/apps/details?id=com.projetomob")
+
+                                }
+                                .padding(12.dp)
+                        ) {
+                            Row {
+                                Icon(
+                                    modifier = Modifier.padding(10.dp),
+                                    imageVector = FeatherIcons.Play,
+                                    contentDescription = null
+                                )
+                                Column {
+                                    Text(
+                                        "Orcim",
+                                        fontSize = 14.sp,
+                                        lineHeight = 12.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Text("Education", fontSize = 12.sp, lineHeight = 12.sp)
+                                    Text("+10 Downloads", fontSize = 12.sp, lineHeight = 12.sp)
+                                }
+                            }
                         }
                     }
                 }
             }
+
         }
 
     }
