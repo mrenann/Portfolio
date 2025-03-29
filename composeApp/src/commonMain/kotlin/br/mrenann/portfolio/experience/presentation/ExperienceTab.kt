@@ -1,10 +1,18 @@
 package br.mrenann.portfolio.experience.presentation
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -12,10 +20,12 @@ import androidx.compose.ui.unit.sp
 import br.mrenann.portfolio.components.timeline.CoursesColumn
 import br.mrenann.portfolio.components.timeline.ProccessStage
 import br.mrenann.portfolio.components.timeline.ProccessStageStatus
+import br.mrenann.portfolio.openUrl
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.Code
+import compose.icons.feathericons.Play
 
 class ExperienceTab() : Tab {
     override val options: TabOptions
@@ -75,6 +85,70 @@ class ExperienceTab() : Tab {
             fontWeight = FontWeight.Bold,
             fontSize = 22.sp
         )
+
+        Column(Modifier.padding(horizontal = 12.dp).padding(top = 12.dp)) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                Column(
+                    Modifier
+                        .weight(.5F)
+                        .background(Color.White, RoundedCornerShape(8.dp))
+                        .clickable {
+                            openUrl("https://play.google.com/store/apps/details?id=com.dh.madeinbrasil")
+                        }
+                        .padding(12.dp)
+                ) {
+                    Row {
+                        Icon(
+                            modifier = Modifier.padding(10.dp),
+                            imageVector = FeatherIcons.Play,
+                            contentDescription = null
+                        )
+                        Column {
+                            Text(
+                                "Made In Brasil",
+                                fontSize = 14.sp,
+                                lineHeight = 12.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text("Entertainment", fontSize = 12.sp, lineHeight = 12.sp)
+                            Text("+10 Downloads", fontSize = 12.sp, lineHeight = 12.sp)
+                        }
+                    }
+
+
+                }
+                Column(
+                    Modifier
+                        .weight(.5F)
+                        .background(Color.White, RoundedCornerShape(8.dp))
+                        .clickable {
+                            openUrl("https://play.google.com/store/apps/details?id=com.projetomob")
+
+                        }
+                        .padding(12.dp)
+                ) {
+                    Row {
+                        Icon(
+                            modifier = Modifier.padding(10.dp),
+                            imageVector = FeatherIcons.Play,
+                            contentDescription = null
+                        )
+                        Column {
+                            Text(
+                                "Orcim",
+                                fontSize = 14.sp,
+                                lineHeight = 12.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text("Education", fontSize = 12.sp, lineHeight = 12.sp)
+                            Text("+10 Downloads", fontSize = 12.sp, lineHeight = 12.sp)
+                        }
+                    }
+                }
+            }
+        }
 
     }
 
