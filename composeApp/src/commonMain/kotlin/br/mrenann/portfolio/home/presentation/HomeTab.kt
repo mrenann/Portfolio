@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.mrenann.portfolio.openUrl
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.FeatherIcons
@@ -226,7 +227,9 @@ class HomeTab() : Tab {
 
                         Row(
                             modifier = Modifier.weight(1F).clip(RoundedCornerShape(8.dp))
-                                .clickable {},
+                                .clickable {
+                                    openUrl("https://www.linkedin.com/in/marcos-renann/")
+                                },
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
@@ -248,7 +251,9 @@ class HomeTab() : Tab {
                     ) {
                         Row(
                             modifier = Modifier.weight(1F).clip(RoundedCornerShape(8.dp))
-                                .clickable {},
+                                .clickable {
+                                    openUrl("mailto:marcos.renann.br@gmail.com")
+                                },
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
@@ -265,7 +270,7 @@ class HomeTab() : Tab {
 
                         Row(
                             modifier = Modifier.weight(1F).clip(RoundedCornerShape(8.dp))
-                                .clickable {},
+                                .clickable { openUrl("https://wa.me/5588997241630") },
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
@@ -287,7 +292,9 @@ class HomeTab() : Tab {
                     ) {
                         Row(
                             modifier = Modifier.weight(.5F).clip(RoundedCornerShape(8.dp))
-                                .clickable {},
+                                .clickable {
+                                    openUrl("https://github.com/mrenann")
+                                },
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
@@ -304,7 +311,10 @@ class HomeTab() : Tab {
 
                         Row(
                             modifier = Modifier.weight(.5F).clip(RoundedCornerShape(8.dp))
-                                .clickable {},
+                                .clickable {
+                                    openUrl("https://gitlab.com/mrenann")
+
+                                },
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
