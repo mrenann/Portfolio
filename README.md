@@ -1,21 +1,87 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
+# Portfolio
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+This is a portfolio app showcasing my Android development skills. It includes various features and
+functionalities implemented using modern Android libraries and frameworks.
 
-* `/iosApp` contains iOS applications. Even if you’re sharing your UI with Compose Multiplatform, 
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+## Features
 
+- **Kotlin Multiplatform**: Utilizes Kotlin Multiplatform to develop for Android,iOS, Web, Desktop
+- **UI Design**: Utilizes Jetpack Compose for building modern and responsive UI.
+- **Navigation**: Implements navigation between different screens using Voyager Navigator and
+  Voyager Tab Navigator.
+- **Image Loading**: Utilizes Compose Image Loader for efficient image loading and caching.
+- **Asynchronous Programming**: Utilizes Kotlin Coroutines for asynchronous programming to handle
+  background tasks efficiently.
+- **Iconography**: Utilizes Feather Icons and Simple Icons libraries for displaying icons in the
+  app.
+- **JSON Serialization**: Uses Kotlinx Serialization library for JSON serialization and
+  deserialization.
+- **Date and Time Handling**: Utilizes Kotlinx DateTime library for handling date and time
+  operations.
+- **Multiplatform Support**: Provides multiplatform support with Material3 Window Size class for
+  compatibility across different platforms.
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+## Libraries Used
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
+- [AppCompat](https://developer.android.com/jetpack/androidx/releases/appcompat)
+- [Compose Activity](https://developer.android.com/jetpack/androidx/releases/activity-compose)
+- [Compose UI Tooling](https://developer.android.com/jetpack/androidx/releases/compose-ui-tooling)
+- [Voyager Navigator](https://github.com/AdrielCafe/Voyager)
+- [Voyager Tab Navigator](https://github.com/AdrielCafe/Voyager)
+- [Voyager Transitions](https://github.com/AdrielCafe/Voyager)
+- [Compose Image Loader](https://github.com/qdsfdhvh/compose-image-loader)
+- [Kotlin Coroutines Core](https://github.com/Kotlin/kotlinx.coroutines)
+- [Kotlin Coroutines Android](https://github.com/Kotlin/kotlinx.coroutines)
+- [Kotlin Coroutines Swing](https://github.com/Kotlin/kotlinx.coroutines)
+- [Compose Icons Feather](https://github.com/devsrsouza/compose-icons)
+- [Compose Icons Simple](https://github.com/devsrsouza/compose-icons)
+- [Kotlinx Serialization JSON](https://github.com/Kotlin/kotlinx.serialization)
+- [Kotlinx DateTime](https://github.com/Kotlin/kotlinx-datetime)
+- [Lyricist](https://github.com/AdrielCafe/Lyricist)
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+## Images
+
+| <img src="docs/assets/phone.png" width="250" /> | <img src="docs/assets/desktop.png" width="500" /> |
+|-------------------------------------------------|---------------------------------------------------|
+| Screen displayed on an Android smartphone       | Screen displayed on a Desktop                     |
+
+| <img src="docs/assets/web.png" width="500" /> | <img src="docs/assets/all.png" width="500" /> |
+|-----------------------------------------------|-----------------------------------------------|
+| Screen showing the website                    | Screen showing all platforms                  |
+|                                               |                                               |
+
+## How to Run:
+
+### Before running!
+
+- check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
+- install JDK 17 on your machine
+- add `local.properties` file to the project root and set a path to Android SDK there
+
+#### Android
+
+To run the application on android device/emulator:
+
+- open project in Android Studio and run imported android run configuration
+
+To build the application bundle:
+
+- run `./gradlew :composeApp:assembleDebug`
+- find `.apk` file in `composeApp/build/outputs/apk/debug/composeApp-debug.apk`
+
+#### Desktop
+
+Run the desktop application: `./gradlew :composeApp:run`
+
+#### iOS
+
+To run the application on iPhone device/simulator:
+
+- Open `iosApp/iosApp.xcproject` in Xcode and run standard configuration
+- Or
+  use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile)
+  for Android Studio
+
+#### Browser
+
+Run the browser application: `./gradlew :composeApp:jsBrowserDevelopmentRun`
