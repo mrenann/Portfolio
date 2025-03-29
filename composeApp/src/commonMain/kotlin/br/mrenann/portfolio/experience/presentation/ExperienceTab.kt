@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import br.mrenann.portfolio.components.timeline.CoursesColumn
 import br.mrenann.portfolio.components.timeline.ProccessStage
 import br.mrenann.portfolio.components.timeline.ProccessStageStatus
+import br.mrenann.portfolio.getSize
 import br.mrenann.portfolio.openUrl
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
@@ -73,9 +75,11 @@ class ExperienceTab() : Tab {
                     status = ProccessStageStatus.FINISHED,
                 ),
             )
-
+        val isNotCompact = getSize().widthSizeClass != WindowWidthSizeClass.Compact
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(vertical = 6.dp)
+                .then(if (isNotCompact) Modifier.padding(24.dp) else Modifier)
+
         ) {
             item {
                 Text(

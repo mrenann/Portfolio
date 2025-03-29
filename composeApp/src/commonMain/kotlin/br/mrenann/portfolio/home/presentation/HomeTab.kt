@@ -76,8 +76,8 @@ class HomeTab() : Tab {
                 if (isNotCompact) {
                     Row(
                         modifier = Modifier.padding(
-                            horizontal = if (isExpanded) 72.dp else if (isMedium) 32.dp else 16.dp,
-                            vertical = 8.dp
+                            horizontal = if (isExpanded) 108.dp else if (isMedium) 32.dp else 16.dp,
+                            vertical = if (isExpanded) 24.dp else if (isMedium) 16.dp else 8.dp,
                         ),
                         horizontalArrangement = Arrangement.Center
                     ) {

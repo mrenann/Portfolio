@@ -96,6 +96,8 @@ class EducationTab() : Tab {
 
         LazyColumn(
             modifier = Modifier.fillMaxSize().padding(vertical = 6.dp)
+                .then(if (isNotCompact) Modifier.padding(24.dp) else Modifier)
+
         ) {
             item {
                 if (isNotCompact.not()) {
