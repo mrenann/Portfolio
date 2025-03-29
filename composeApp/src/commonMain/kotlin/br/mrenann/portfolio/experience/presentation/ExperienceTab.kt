@@ -5,6 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -25,6 +26,7 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.Code
+import compose.icons.feathericons.Github
 import compose.icons.feathericons.Play
 
 class ExperienceTab() : Tab {
@@ -86,7 +88,108 @@ class ExperienceTab() : Tab {
             fontSize = 22.sp
         )
 
-        Column(Modifier.padding(horizontal = 12.dp).padding(top = 12.dp)) {
+        Column(
+            Modifier.padding(horizontal = 12.dp).padding(top = 12.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp)
+        ) {
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .background(
+                        MaterialTheme.colorScheme.surfaceContainer,
+                        RoundedCornerShape(8.dp)
+                    )
+                    .clickable {
+                        openUrl("https://github.com/mrenann/ecommerce")
+                    }
+                    .padding(12.dp)
+            ) {
+                Row {
+                    Icon(
+                        modifier = Modifier.padding(10.dp),
+                        imageVector = FeatherIcons.Github,
+                        contentDescription = null
+                    )
+                    Column {
+                        Text(
+                            "Ecommerce App",
+                            fontSize = 14.sp,
+                            lineHeight = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            "Android | Kotlin | Firebase | ROOM | MVVM | Jetpack Compose | Multi modular",
+                            fontSize = 12.sp,
+                            lineHeight = 12.sp,
+                            fontWeight = FontWeight.SemiBold
+
+                        )
+                        Text(
+                            "Designed and developed a complete ecommerce experience",
+                            fontSize = 12.sp,
+                            lineHeight = 12.sp
+                        )
+                        Text(
+                            "Product Browsing, favorites, cart management, purchases, coupons",
+                            fontSize = 12.sp,
+                            lineHeight = 12.sp
+                        )
+                        Text("Firebase integration", fontSize = 12.sp, lineHeight = 12.sp)
+                        Text(
+                            "Project multi modulat for better maintainability",
+                            fontSize = 12.sp,
+                            lineHeight = 12.sp
+                        )
+                    }
+                }
+
+
+            }
+
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .background(
+                        MaterialTheme.colorScheme.surfaceContainer,
+                        RoundedCornerShape(8.dp)
+                    )
+                    .clickable {
+                        openUrl("https://github.com/mrenann/globoplay-mobile")
+                    }
+                    .padding(12.dp)
+            ) {
+                Row {
+                    Icon(
+                        modifier = Modifier.padding(10.dp),
+                        imageVector = FeatherIcons.Github,
+                        contentDescription = null
+                    )
+                    Column {
+                        Text(
+                            "GloboPlay Clone App",
+                            fontSize = 14.sp,
+                            lineHeight = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            "Android | Kotlin | ROOM | MVVM | Jetpack Compose",
+                            fontSize = 12.sp,
+                            lineHeight = 12.sp,
+                            fontWeight = FontWeight.SemiBold
+                            
+                        )
+                        Text("Integration with TMDB API", fontSize = 12.sp, lineHeight = 12.sp)
+                        Text(
+                            "Unit Tests and Github Actions for CI/CD",
+                            fontSize = 12.sp,
+                            lineHeight = 12.sp
+                        )
+                    }
+                }
+
+
+            }
+
             Row(
                 horizontalArrangement = Arrangement.spacedBy(6.dp),
             ) {
