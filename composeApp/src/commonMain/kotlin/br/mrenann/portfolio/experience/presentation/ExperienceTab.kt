@@ -8,11 +8,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -93,7 +93,10 @@ class ExperienceTab() : Tab {
                 Column(
                     Modifier
                         .weight(.5F)
-                        .background(Color.White, RoundedCornerShape(8.dp))
+                        .background(
+                            MaterialTheme.colorScheme.surfaceContainer,
+                            RoundedCornerShape(8.dp)
+                        )
                         .clickable {
                             openUrl("https://play.google.com/store/apps/details?id=com.dh.madeinbrasil")
                         }
@@ -122,7 +125,10 @@ class ExperienceTab() : Tab {
                 Column(
                     Modifier
                         .weight(.5F)
-                        .background(Color.White, RoundedCornerShape(8.dp))
+                        .background(
+                            MaterialTheme.colorScheme.surfaceContainer,
+                            RoundedCornerShape(8.dp)
+                        )
                         .clickable {
                             openUrl("https://play.google.com/store/apps/details?id=com.projetomob")
 
