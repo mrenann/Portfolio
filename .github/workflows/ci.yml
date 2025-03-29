@@ -2,7 +2,7 @@ name: Publish Application on GitHub Pages
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   # Build job
