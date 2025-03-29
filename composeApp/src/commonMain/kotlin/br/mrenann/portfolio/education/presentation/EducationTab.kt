@@ -1,11 +1,13 @@
 package br.mrenann.portfolio.education.presentation
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -16,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import br.mrenann.portfolio.components.timeline.CoursesColumn
 import br.mrenann.portfolio.components.timeline.ProccessStage
 import br.mrenann.portfolio.components.timeline.ProccessStageStatus
+import br.mrenann.portfolio.getSize
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.FeatherIcons
@@ -39,6 +42,8 @@ class EducationTab() : Tab {
 
     @Composable
     override fun Content() {
+        val isNotCompact = getSize().widthSizeClass != WindowWidthSizeClass.Compact
+
         val education =
             arrayOf(
                 ProccessStage(
@@ -93,24 +98,61 @@ class EducationTab() : Tab {
             modifier = Modifier.fillMaxSize().padding(vertical = 6.dp)
         ) {
             item {
-                Column(
-                    Modifier.fillMaxWidth()
-                ) {
-                    Text(
-                        modifier = Modifier.padding(horizontal = 12.dp),
-                        text = "Education",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 22.sp
-                    )
-                    CoursesColumn(education)
-                    Text(
-                        modifier = Modifier.padding(horizontal = 12.dp),
-                        text = "Certifications",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 22.sp
-                    )
+                if (isNotCompact.not()) {
+                    Column(
+                        Modifier.fillMaxWidth()
+                    ) {
+                        Column {
+                            Text(
+                                modifier = Modifier.padding(horizontal = 12.dp),
+                                text = "Education",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 22.sp
+                            )
+                            CoursesColumn(education)
+                        }
+                        Column {
+                            Text(
+                                modifier = Modifier.padding(horizontal = 12.dp),
+                                text = "Certifications",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 22.sp
+                            )
 
-                    CoursesColumn(certifications)
+                            CoursesColumn(certifications)
+                        }
+
+                    }
+                } else {
+                    Row(
+                        Modifier.fillMaxWidth()
+                    ) {
+                        Column(
+                            modifier = Modifier.weight(.5F)
+                        ) {
+                            Text(
+                                modifier = Modifier.padding(horizontal = 12.dp),
+                                text = "Education",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 22.sp
+                            )
+                            CoursesColumn(education)
+                        }
+
+                        Column(
+                            modifier = Modifier.weight(.5F)
+                        ) {
+                            Text(
+                                modifier = Modifier.padding(horizontal = 12.dp),
+                                text = "Certifications",
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 22.sp
+                            )
+
+                            CoursesColumn(certifications)
+                        }
+
+                    }
                 }
 
 
