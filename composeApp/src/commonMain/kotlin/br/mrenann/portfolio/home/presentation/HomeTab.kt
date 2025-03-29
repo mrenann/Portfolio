@@ -6,6 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -30,18 +32,26 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import br.mrenann.portfolio.core.ui.theme.Primary
 import br.mrenann.portfolio.getSize
 import br.mrenann.portfolio.openUrl
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import compose.icons.FeatherIcons
+import compose.icons.SimpleIcons
 import compose.icons.feathericons.AlignJustify
 import compose.icons.feathericons.Github
 import compose.icons.feathericons.Gitlab
 import compose.icons.feathericons.Linkedin
 import compose.icons.feathericons.Mail
+import compose.icons.feathericons.MapPin
 import compose.icons.feathericons.Phone
 import compose.icons.feathericons.User
+import compose.icons.simpleicons.Firebase
+import compose.icons.simpleicons.Java
+import compose.icons.simpleicons.Jetbrains
+import compose.icons.simpleicons.Kotlin
+import compose.icons.simpleicons.React
 import org.jetbrains.compose.resources.painterResource
 import portfolio.composeapp.generated.resources.Res
 import portfolio.composeapp.generated.resources.myphoto
@@ -66,8 +76,8 @@ class HomeTab() : Tab {
     @Composable
     override fun Content() {
         val isNotCompact = getSize().widthSizeClass != WindowWidthSizeClass.Compact
-        val isMedium = getSize().widthSizeClass != WindowWidthSizeClass.Compact
-        val isExpanded = getSize().widthSizeClass != WindowWidthSizeClass.Expanded
+        val isMedium = getSize().widthSizeClass == WindowWidthSizeClass.Medium
+        val isExpanded = getSize().widthSizeClass == WindowWidthSizeClass.Expanded
         LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
@@ -76,14 +86,15 @@ class HomeTab() : Tab {
                 if (isNotCompact) {
                     Row(
                         modifier = Modifier.padding(
-                            horizontal = if (isExpanded) 108.dp else if (isMedium) 32.dp else 16.dp,
+                            horizontal = if (isExpanded) 108.dp else if (isMedium) 12.dp else 16.dp,
                             vertical = if (isExpanded) 24.dp else if (isMedium) 16.dp else 8.dp,
-                        ),
+                        ).fillMaxHeight(),
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Header()
                         Column {
                             AboutMe()
+                            Skills()
                             Contacts()
                         }
                     }
@@ -330,18 +341,98 @@ class HomeTab() : Tab {
         }
     }
 
+    @Composable
+    private fun Skills() {
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 4.dp)
+                .background(
+                    MaterialTheme.colorScheme.surfaceContainer, RoundedCornerShape(16.dp)
+                )
+                .padding(12.dp)
+        ) {
+            Text(text = "What i Do", fontWeight = FontWeight.Bold, fontSize = 22.sp)
+            Text(
+                text = "I specialize in mobile development, crafting high-performance applications with React Native and Kotlin (Jetpack Compose).",
+                textAlign = TextAlign.Justify
+            )
+            Text(
+                text = "React Native & Kotlin – Building robust mobile applications with modern UI/UX principles.",
+                textAlign = TextAlign.Justify
+            )
+            Text(
+                text = "Jetpack Compose – Creating intuitive, scalable, and maintainable Android apps.",
+                textAlign = TextAlign.Justify
+            )
+            Text(
+                text = "iOS & Swift (KMP) – Learning and improving knowledge of iOS and Kotlin Multiplatform.",
+                textAlign = TextAlign.Justify
+            )
+            Text(
+                text = "Architecture & Best Practices – Designing scalable architectures following MVVM, Clean Architecture, and SOLID principles.",
+                textAlign = TextAlign.Justify
+            )
+            Spacer(Modifier.size(12.dp))
+            Text(text = "Skills", fontWeight = FontWeight.Bold, fontSize = 22.sp)
+            Spacer(Modifier.size(6.dp))
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                Icon(
+                    tint = Primary,
+                    imageVector = SimpleIcons.Kotlin,
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+
+                    )
+                Icon(
+                    tint = Primary,
+                    imageVector = SimpleIcons.Java,
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+
+                    )
+                Icon(
+                    tint = Primary,
+                    imageVector = SimpleIcons.Jetbrains,
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+
+                    )
+                Icon(
+                    tint = Primary,
+                    imageVector = SimpleIcons.Firebase,
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+
+                    )
+                Icon(
+                    tint = Primary,
+                    imageVector = SimpleIcons.React,
+                    contentDescription = null,
+                    modifier = Modifier.size(32.dp),
+
+                    )
+            }
+
+
+        }
+    }
+
 
     @Composable
     private fun Header() {
         val isNotCompact = getSize().widthSizeClass != WindowWidthSizeClass.Compact
         Column(
             modifier = Modifier
-                .then(if (isNotCompact.not()) Modifier.fillMaxWidth() else Modifier)
+                .then(
+                    if (isNotCompact.not()) Modifier.fillMaxWidth() else Modifier
+                )
                 .padding(horizontal = 12.dp, vertical = 4.dp)
                 .background(
                     MaterialTheme.colorScheme.surfaceContainer,
                     RoundedCornerShape(16.dp)
                 )
+
         ) {
             if (isNotCompact) {
                 Column(
@@ -350,7 +441,56 @@ class HomeTab() : Tab {
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     HeaderContent()
+                    Column {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(2.dp)
+                        ) {
+                            Icon(
+                                FeatherIcons.MapPin,
+                                contentDescription = null,
+                                modifier = Modifier.size(12.dp),
 
+                                )
+                            Text(
+                                text = "Brazil",
+                                fontSize = 12.sp,
+                            )
+
+                        }
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(2.dp)
+                        ) {
+                            Icon(
+                                FeatherIcons.Phone,
+                                contentDescription = null,
+                                modifier = Modifier.size(12.dp),
+
+                                )
+                            Text(
+                                text = "+55 88997241630",
+                                fontSize = 12.sp,
+                            )
+
+                        }
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(2.dp)
+                        ) {
+                            Icon(
+                                FeatherIcons.Mail,
+                                contentDescription = null,
+                                modifier = Modifier.size(12.dp),
+
+                                )
+                            Text(
+                                text = "marcos.renann.br@gmail.com",
+                                fontSize = 12.sp,
+                            )
+
+                        }
+                    }
                 }
             } else {
                 Row(

@@ -80,7 +80,9 @@ internal fun MessageBubble(
                             text = dates,
                             textAlign = TextAlign.End,
                             fontWeight = W600,
-                            fontSize = 12.sp
+                            fontSize = 12.sp,
+                            color = getTextColor(proccessStage)
+
                         )
                     }
                 }
@@ -93,6 +95,7 @@ internal fun MessageBubble(
                             style = getTextStyle(proccessStage),
                             fontWeight = W400,
                             color = getTextColor(proccessStage)
+
                         )
                     }
                 }
@@ -100,7 +103,9 @@ internal fun MessageBubble(
                     Text(
                         text = desc,
                         fontSize = 12.sp,
-                        lineHeight = 12.sp
+                        lineHeight = 12.sp,
+                        color = getTextColor(proccessStage)
+                        
                     )
                 }
 

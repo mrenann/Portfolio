@@ -92,6 +92,13 @@ class EducationTab() : Tab {
                     isEducation = true,
                     status = ProccessStageStatus.FINISHED,
                 ),
+                ProccessStage(
+                    title = "Entrepreneurship",
+                    subtitle = "Senai",
+                    intervalDate = "2017",
+                    isEducation = true,
+                    status = ProccessStageStatus.FINISHED,
+                ),
             )
 
         LazyColumn(

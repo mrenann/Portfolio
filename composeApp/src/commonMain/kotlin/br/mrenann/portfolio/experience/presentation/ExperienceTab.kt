@@ -204,6 +204,49 @@ class ExperienceTab() : Tab {
 
                     }
 
+                    Column(
+                        Modifier
+                            .fillMaxWidth()
+                            .background(
+                                MaterialTheme.colorScheme.surfaceContainer,
+                                RoundedCornerShape(8.dp)
+                            )
+                            .clickable {
+                                openUrl("https://github.com/mrenann/globoplay-mobile")
+                            }
+                            .padding(12.dp)
+                    ) {
+                        Row {
+                            Icon(
+                                modifier = Modifier.padding(10.dp),
+                                imageVector = FeatherIcons.Github,
+                                contentDescription = null
+                            )
+                            Column {
+                                Text(
+                                    "Portfolio",
+                                    fontSize = 14.sp,
+                                    lineHeight = 12.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    "Kotlin | MVVM | Jetpack Compose | KMP",
+                                    fontSize = 12.sp,
+                                    lineHeight = 12.sp,
+                                    fontWeight = FontWeight.SemiBold
+
+                                )
+                                Text(
+                                    "Multiplatform project for iOS, Android, Desktop and Web",
+                                    fontSize = 12.sp,
+                                    lineHeight = 12.sp
+                                )
+                            }
+                        }
+
+
+                    }
+
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(6.dp),
                     ) {
