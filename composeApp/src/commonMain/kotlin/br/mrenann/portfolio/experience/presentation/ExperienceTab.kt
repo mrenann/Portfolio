@@ -212,7 +212,7 @@ class ExperienceTab() : Tab {
                                 RoundedCornerShape(8.dp)
                             )
                             .clickable {
-                                openUrl("https://github.com/mrenann/globoplay-mobile")
+                                openUrl("https://github.com/mrenann/Portfolio")
                             }
                             .padding(12.dp)
                     ) {

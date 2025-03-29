@@ -135,7 +135,11 @@ class HomeTab() : Tab {
             ) {
                 Row(
                     modifier = Modifier.weight(1F).clip(RoundedCornerShape(8.dp))
-                        .clickable {},
+                        .clickable {
+                            openUrl(
+                                "https://1drv.ms/b/c/e2da20f16dfd3abe/EbsVCPAKu2JAocJwxIvaJQwByg524hwYA73DhO23ykzBPA?e=yUHiAn"
+                            )
+                        },
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
@@ -152,7 +156,11 @@ class HomeTab() : Tab {
 
                 Row(
                     modifier = Modifier.weight(1F).clip(RoundedCornerShape(8.dp))
-                        .clickable {},
+                        .clickable {
+                            openUrl(
+                                "https://1drv.ms/b/c/e2da20f16dfd3abe/EfIE29GahwtMtIRE0riLIiYBDlXTRrbo4g5_aXcTV2Fr9w?e=T9ZboS"
+                            )
+                        },
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
@@ -174,7 +182,11 @@ class HomeTab() : Tab {
             ) {
                 Row(
                     modifier = Modifier.weight(1F).clip(RoundedCornerShape(8.dp))
-                        .clickable {},
+                        .clickable {
+                            openUrl(
+                                "https://1drv.ms/b/c/e2da20f16dfd3abe/EYbJRJL6W8NBr32jqaWNvDcBJQVBiC1xnbCreSQeThe8eg?e=hJIvMt"
+                            )
+                        },
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
