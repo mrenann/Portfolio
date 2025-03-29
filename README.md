@@ -41,11 +41,12 @@ functionalities implemented using modern Android libraries and frameworks.
 
 ## Images
 
-| <img src="docs/assets/phone.png" width="250" /> | <img src="docs/assets/desktop.png" width="500" /> |
+| <img src="https://github.com/user-attachments/assets/39c2a342-2ea5-49c7-a788-fdeef00964e9" width="250" /> | <img src="https://github.com/user-attachments/assets/08177c95-695c-4b44-b74c-ccbdc8758cba" width="500" /> |
 |-------------------------------------------------|---------------------------------------------------|
 | Screen displayed on an Android smartphone       | Screen displayed on a Desktop                     |
 
-| <img src="docs/assets/web.png" width="500" /> | <img src="docs/assets/all.png" width="500" /> |
+
+| <img src="https://github.com/user-attachments/assets/07fbe275-db43-487f-9fa8-7761f345fa19" width="500" /> | <img src="https://github.com/user-attachments/assets/0c6c0b4a-5642-4d7f-a668-495442ab79ae" width="500" /> |
 |-----------------------------------------------|-----------------------------------------------|
 | Screen showing the website                    | Screen showing all platforms                  |
 |                                               |                                               |
